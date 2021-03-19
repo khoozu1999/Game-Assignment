@@ -5,6 +5,7 @@
 
 int main()
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+//This is the testing command line look here
 {
 	KZWindows* windows = KZWindows::getInstance();
 	windows->createWindows();
