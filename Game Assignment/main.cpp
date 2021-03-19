@@ -27,4 +27,5 @@ int main()
 	GameStateManager::getInstance()->releaseInsrance();
 
 	return 0;
+	//hello nicholas
 }
