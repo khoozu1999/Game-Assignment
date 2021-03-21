@@ -80,6 +80,9 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game Assignment.rc">

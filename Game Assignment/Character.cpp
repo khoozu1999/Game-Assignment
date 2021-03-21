@@ -3,6 +3,7 @@
 #include "GameStateManager.h"
 #include "Graphic.h"
 #include "DirectInput.h"
+#include "Background.h"
 
 Character::Character()
 {
@@ -174,7 +175,7 @@ void Character::draw()
 
 	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	charSprite->SetTransform(&mat);
-	charSprite->Draw(charTexture, charRect, &D3DXVECTOR3(0, 0, 0), &D3DXVECTOR3(0, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(charTexture, charRect, &D3DXVECTOR3(0,0, 0), &D3DXVECTOR3(0,0, 0), D3DCOLOR_XRGB(255, 255, 255));
 	charSprite->End();
 }
 
@@ -186,3 +187,4 @@ void Character::release()
 	charTexture->Release();
 	charTexture = NULL;
 }
+
