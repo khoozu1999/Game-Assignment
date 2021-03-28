@@ -68,12 +68,12 @@ LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 void KZWindows::createWindows()
 {
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	//wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndClass.hInstance = hInstance;
 	wndClass.lpfnWndProc = WindowProcedure;
 	wndClass.lpszClassName = "Windows";
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-	wndClass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
+	//wndClass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
 
 	RegisterClass(&wndClass);
 

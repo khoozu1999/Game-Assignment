@@ -11,6 +11,7 @@ public:
 	HRESULT hr;
 
 	LPD3DXSPRITE charSprite;
+	D3DXVECTOR3 position;
 	RECT charRect[16];
 	LPDIRECT3DTEXTURE9 charTexture;
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;

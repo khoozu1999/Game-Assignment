@@ -6,24 +6,28 @@ class Background : public GameState
 {
 public:
 	Background();
-	~Background();
+	
+	D3DXVECTOR3 drawPosition[2][4];
 
 	HRESULT hr;
 
-	LPD3DXSPRITE charSprite;
-	RECT charRect[16];
-	LPDIRECT3DTEXTURE9 charTexture;
-	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
-	D3DXMATRIX mat;
-	int frameNum, charFrame, charState;
-	float frameRate, frameTimer, animationSpeed, charSpeed;
-	bool isMoving;
+	LPD3DXSPRITE bgSprite;
+	LPDIRECT3DTEXTURE9 bgTexture1;
+	LPDIRECT3DTEXTURE9 bgTexture2;
+	LPDIRECT3DTEXTURE9 bgTexture3;
+	LPDIRECT3DTEXTURE9 bgTexture4;
+
+
+	RECT spriteRect, backgroundRect;
+	
+	
 
 	void init();
-	void fixedUpdate();
 	void update();
-	void draw();
+	void drawBackground();
 	void release();
+
+
 };
 
 

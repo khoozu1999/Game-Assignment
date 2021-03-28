@@ -5,6 +5,7 @@
 #include "DirectInput.h"
 #include "Background.h"
 
+
 Character::Character()
 {
 	charSprite = NULL;
@@ -16,6 +17,8 @@ Character::Character()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
+
+	position = { 0,0,0 };
 	charFrame = 0;
 	frameNum = 0;
 	charState = 0;
@@ -175,7 +178,7 @@ void Character::draw()
 
 	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	charSprite->SetTransform(&mat);
-	charSprite->Draw(charTexture, charRect, &D3DXVECTOR3(0,0, 0), &D3DXVECTOR3(0,0, 0), D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(charTexture, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));
 	charSprite->End();
 }
 
