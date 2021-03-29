@@ -18,6 +18,11 @@ Background::Background() {
 
 }
 
+Background::~Background()
+{
+
+}
+
 void Background::init() {
 
 	HRESULT hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &bgSprite);
@@ -28,7 +33,11 @@ void Background::init() {
 	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building4", &bgTexture4);
 }
 
-void Background::drawBackground() {
+//void update() {
+//
+//}
+
+void Background::draw() {
 
 
 	bgSprite->Draw(bgTexture1, &backgroundRect, NULL, &drawPosition[0][1], D3DCOLOR_XRGB(255, 255, 255));

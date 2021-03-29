@@ -11,9 +11,14 @@ public:
 	HRESULT hr;
 
 	LPD3DXSPRITE charSprite;
-	D3DXVECTOR3 position;
+	D3DXVECTOR3 position, positionBG;
 	RECT charRect[16];
 	LPDIRECT3DTEXTURE9 charTexture;
+	/*LPDIRECT3DTEXTURE9 bgTexture1;
+	LPDIRECT3DTEXTURE9 bgTexture2;
+	LPDIRECT3DTEXTURE9 bgTexture3;
+	LPDIRECT3DTEXTURE9 bgTexture4;*/
+
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
 	D3DXMATRIX mat;
 	int frameNum, charFrame, charState;

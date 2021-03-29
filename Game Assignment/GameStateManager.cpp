@@ -1,6 +1,7 @@
 #include "GameStateManager.h"
 #include "Level1.h"
 #include "Character.h"
+#include "Background.h"
 
 
 //singleton
@@ -32,9 +33,13 @@ GameStateManager::GameStateManager()
 	level1->init();
 	stateList.push_back(level1);*/
 
-	Character* character = new Character();
+	/*Character* character = new Character();
 	character->init();
-	stateList.push_back(character);
+	stateList.push_back(character);*/
+
+	Background* background = new Background();
+	background->init();
+	stateList.push_back(background);
 
 	gTime = new GTime();
 	gTime->init(60);

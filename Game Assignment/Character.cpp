@@ -17,7 +17,7 @@ Character::Character()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
-
+	positionBG = { 5,10,0 };
 	position = { 0,0,0 };
 	charFrame = 0;
 	frameNum = 0;
@@ -43,9 +43,16 @@ void Character::init()
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
 		NULL, NULL, &charTexture);
 
+	/*hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building1.png", &bgTexture1);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building2.png", &bgTexture2);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building3.png", &bgTexture3);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building4.png", &bgTexture4);*/
+
 	if (FAILED(hr))
 	{
+		printf("gg");
 		PostQuitMessage(0);
+		system("pause");
 	}
 
 	charSize.x = 64;
@@ -179,6 +186,10 @@ void Character::draw()
 	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	charSprite->SetTransform(&mat);
 	charSprite->Draw(charTexture, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));
+	/*charSprite->Draw(bgTexture1, charRect, &positionBG, &positionBG, D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(bgTexture2, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(bgTexture3, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(bgTexture4, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));*/
 	charSprite->End();
 }
 
