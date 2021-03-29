@@ -22,9 +22,10 @@ public:
 
 	
 	
-
+	
 	void init();
 	void update();
+	void fixedUpdate();
 	void drawBackground();
 	void release();
 

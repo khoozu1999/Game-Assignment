@@ -30,7 +30,13 @@ void Background::init() {
 	spriteRect.left = spriteRect.top = 0;
 	spriteRect.right = spriteRect.bottom = 32;
 }
+void Background::update() {
 
+}
+
+void Background::fixedUpdate() {
+
+}
 void Background::drawBackground() {
 
 	bgSprite->Begin(D3DXSPRITE_ALPHABLEND);
