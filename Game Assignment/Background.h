@@ -26,7 +26,7 @@ public:
 	
 	void init();
 	void fixedUpdate();
-	void drawBackground();
+	void draw();
 	void update();
 
 	void release();

@@ -43,7 +43,7 @@ void Background::fixedUpdate() {
 
 }
 
-void Background::drawBackground() {
+void Background::draw() {
 
 	bgSprite->Begin(D3DXSPRITE_ALPHABLEND);
 

@@ -50,9 +50,7 @@ void Character::init()
 
 	if (FAILED(hr))
 	{
-		printf("gg");
 		PostQuitMessage(0);
-		system("pause");
 	}
 
 	charSize.x = 64;
