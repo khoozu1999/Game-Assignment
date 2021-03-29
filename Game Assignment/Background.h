@@ -21,13 +21,14 @@ public:
 
 	RECT spriteRect, backgroundRect;
 
-	
+
 	
 	
 	void init();
 	void fixedUpdate();
+	void drawBackground();
 	void update();
-	void draw();
+
 	void release();
 
 

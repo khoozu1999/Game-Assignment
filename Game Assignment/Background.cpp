@@ -36,7 +36,12 @@ void Background::init() {
 	spriteRect.right = spriteRect.bottom = 32;
 }
 
+void Background::update() {
 
+}
+void Background::fixedUpdate() {
+
+}
 
 void Background::drawBackground() {
 
