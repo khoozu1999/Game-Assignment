@@ -14,7 +14,7 @@ Background::Background() {
 	bgSprite = NULL;
 
 
-	backgroundRect = { 0,0,400,400 };
+	backgroundRect = { 0,0,270,104};
 
 }
 
@@ -22,19 +22,25 @@ void Background::init() {
 
 	HRESULT hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &bgSprite);
 
-	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building1", &bgTexture1);
-	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building2", &bgTexture2);
-	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building3", &bgTexture3);
-	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building4", &bgTexture4);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building1.png", &bgTexture1);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building2.png", &bgTexture2);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building3.png", &bgTexture3);
+	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/building4.png", &bgTexture4);
+
+	spriteRect.left = spriteRect.top = 0;
+	spriteRect.right = spriteRect.bottom = 32;
 }
 
 void Background::drawBackground() {
 
+	bgSprite->Begin(D3DXSPRITE_ALPHABLEND);
 
-	bgSprite->Draw(bgTexture1, &backgroundRect, NULL, &drawPosition[0][1], D3DCOLOR_XRGB(255, 255, 255));
-	bgSprite->Draw(bgTexture2, &backgroundRect, NULL, &drawPosition[0][1], D3DCOLOR_XRGB(255, 255, 255));
-	bgSprite->Draw(bgTexture3, &backgroundRect, NULL, &drawPosition[0][1], D3DCOLOR_XRGB(255, 255, 255));
-	bgSprite->Draw(bgTexture4, &backgroundRect, NULL, &drawPosition[0][1], D3DCOLOR_XRGB(255, 255, 255));
+	bgSprite->Draw(bgTexture1, &backgroundRect, NULL, &drawPosition[1][1], D3DCOLOR_XRGB(255, 255, 255));
+	bgSprite->Draw(bgTexture2, &backgroundRect, NULL, &drawPosition[1][2], D3DCOLOR_XRGB(255, 255, 255));
+	bgSprite->Draw(bgTexture3, &backgroundRect, NULL, &drawPosition[1][3], D3DCOLOR_XRGB(255, 255, 255));
+	bgSprite->Draw(bgTexture4, &backgroundRect, NULL, &drawPosition[1][4], D3DCOLOR_XRGB(255, 255, 255));
+
+	bgSprite->End();
 	
 }
 
