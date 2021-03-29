@@ -20,6 +20,7 @@ public:
 
 
 	RECT spriteRect, backgroundRect;
+
 	
 	
 
