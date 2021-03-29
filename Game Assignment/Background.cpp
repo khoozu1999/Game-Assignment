@@ -18,6 +18,11 @@ Background::Background() {
 
 }
 
+Background::~Background()
+{
+
+}
+
 void Background::init() {
 
 	HRESULT hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &bgSprite);

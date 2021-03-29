@@ -6,6 +6,7 @@ class Background : public GameState
 {
 public:
 	Background();
+	~Background();
 	
 	D3DXVECTOR3 drawPosition[2][4];
 
@@ -24,8 +25,9 @@ public:
 	
 	
 	void init();
+	void fixedUpdate();
 	void update();
-	void drawBackground();
+	void draw();
 	void release();
 
 
