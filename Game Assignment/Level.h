@@ -1,10 +1,10 @@
 #pragma once
 #include "GameState.h"
-class Level1 : public GameState
+class Level : public GameState
 {
 public:
-	Level1();
-	~Level1();
+	Level();
+	~Level();
 
 
 	void init();

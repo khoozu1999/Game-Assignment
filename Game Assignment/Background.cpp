@@ -5,6 +5,25 @@
 #include "Background.h"
 #include "Windows.h"
 
+
+Background* Background::sInstance = NULL;
+
+Background* Background::getInstance()
+{
+	if (Background::sInstance == NULL)
+	{
+		sInstance = new Background;
+	}
+
+	return sInstance;
+}
+
+void Background::releaseInstance()
+{
+	delete sInstance;
+	sInstance = NULL;
+}
+
 Background::Background() {
 
 	bgTexture1 = NULL;

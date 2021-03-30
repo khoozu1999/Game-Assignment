@@ -2,22 +2,21 @@
 #include <d3dx9.h>
 #include "GameState.h"
 
-class Character : public GameState
+class Character
 {
-public:
+private:
+	static Character* sInstance;
 	Character();
 	~Character();
-
+public:
+	static Character* getInstance();
+	static void releaseInstance();
 	HRESULT hr;
 
 	LPD3DXSPRITE charSprite;
 	D3DXVECTOR3 position, positionBG;
 	RECT charRect[16];
 	LPDIRECT3DTEXTURE9 charTexture;
-	/*LPDIRECT3DTEXTURE9 bgTexture1;
-	LPDIRECT3DTEXTURE9 bgTexture2;
-	LPDIRECT3DTEXTURE9 bgTexture3;
-	LPDIRECT3DTEXTURE9 bgTexture4;*/
 
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
 	D3DXMATRIX mat;

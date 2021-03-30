@@ -2,11 +2,15 @@
 #include <d3dx9.h>
 #include "GameState.h"
 
-class Background : public GameState
+class Background
 {
-public:
+private:
+	static Background* sInstance;
 	Background();
 	~Background();
+public:
+	static Background* getInstance();
+	static void releaseInstance();
 	
 	D3DXVECTOR3 drawPosition[2][4];
 
@@ -28,7 +32,6 @@ public:
 	void fixedUpdate();
 	void draw();
 	void update();
-
 	void release();
 
 

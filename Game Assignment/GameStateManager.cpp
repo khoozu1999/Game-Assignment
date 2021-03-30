@@ -1,5 +1,5 @@
 #include "GameStateManager.h"
-#include "Level1.h"
+#include "Level.h"
 #include "Character.h"
 #include "Background.h"
 
@@ -29,17 +29,17 @@ GameStateManager::GameStateManager()
 	framesToUpdate = 0;
 	preState = 0;
 
-	/*Level1* level1 = new Level1();
-	level1->init();
-	stateList.push_back(level1);*/
+	Level* level = new Level();
+	level->init();
+	stateList.push_back(level);
 
 	/*Character* character = new Character();
 	character->init();
 	stateList.push_back(character);*/
 
-	Background* background = new Background();
+	/*Background* background = new Background();
 	background->init();
-	stateList.push_back(background);
+	stateList.push_back(background);*/
 
 	gTime = new GTime();
 	gTime->init(60);
