@@ -34,7 +34,6 @@ Character::Character()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
-	positionBG = { 5,10,0 };
 	position = { 0,0,0 };
 	charFrame = 0;
 	frameNum = 0;
@@ -121,7 +120,7 @@ void Character::fixedUpdate()
 	charRect->left = charSize.x * charFrame;
 	charRect->right = charRect->left + charSize.x;
 
-	D3DXVECTOR2 scaling(0.8f, 0.8f);
+	D3DXVECTOR2 scaling(0.6f, 0.6f);
 	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &charPosition);
 }
 
@@ -195,7 +194,7 @@ void Character::draw()
 
 	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	charSprite->SetTransform(&mat);
-	charSprite->Draw(charTexture, charRect, &position, &position, D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(charTexture, charRect, &position, NULL, D3DCOLOR_XRGB(255, 255, 255));
 	charSprite->End();
 }
 

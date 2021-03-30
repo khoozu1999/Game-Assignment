@@ -23,8 +23,9 @@ void Level::update() {
 	Background::getInstance()->update();
 }
 void Level::draw() {
-	Character::getInstance()->draw();
+	
 	Background::getInstance()->draw();
+	Character::getInstance()->draw();
 }
 void Level::release() {
 	Character::getInstance()->release();
