@@ -14,7 +14,7 @@ Background::Background() {
 	bgSprite = NULL;
 
 
-	backgroundRect = { 0,0,270,104};
+	backgroundRect = { 0,0,352,224};
 
 }
 
