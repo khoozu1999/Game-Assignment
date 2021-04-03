@@ -33,7 +33,7 @@ Character::Character()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
-	position = { 0,-300,0 };
+	position = { 0,-280,0 };
 	charFrame = 0;
 	frameNum = 0;
 	charState = 0;
@@ -126,6 +126,7 @@ void Character::fixedUpdate()
 
 void Character::update()
 {
+	printf("Character : %lf - %lf\n", charPosition.x, charPosition.y);
 	if (DirectInput::getInstance()->diKeys[DIK_UP] && DirectInput::getInstance()->diKeys[DIK_LEFT])
 	{
 		//charState = 1;
@@ -142,12 +143,21 @@ void Character::update()
 		isMoving = true;
 	}
 
+	//else if (DirectInput::getInstance()->diKeys[DIK_UP])
+	//{
+	//	//charState = 3;
+	//	charDirection.x = 0;
+	//	charDirection.y = -1;
+	//	isMoving = true;
+	//}
+
 	else if (DirectInput::getInstance()->diKeys[DIK_UP])
 	{
-		//charState = 3;
-		charDirection.x = 0;
-		charDirection.y = -1;
-		isMoving = true;
+		if (charVelocity.y == 0)
+		{
+			isJump = true;
+		}
+
 	}
 
 	else if (DirectInput::getInstance()->diKeys[DIK_DOWN])
@@ -156,6 +166,7 @@ void Character::update()
 		charDirection.x = 0;
 		charDirection.y = 1;
 		isMoving = true;
+		isJump = false;
 	}
 
 	else if (DirectInput::getInstance()->diKeys[DIK_LEFT])
@@ -164,6 +175,7 @@ void Character::update()
 		charDirection.x = -1;
 		charDirection.y = 0;
 		isMoving = true;
+		isJump = false;
 	}
 
 	else if (DirectInput::getInstance()->diKeys[DIK_RIGHT])
@@ -172,11 +184,13 @@ void Character::update()
 		charDirection.x = 1;
 		charDirection.y = 0;
 		isMoving = true;
+		isJump = false;
 	}
 
 	else
 	{
 		isMoving = false;
+		isJump = false;
 		if (charSpeed == 0) {
 			charState = 0;
 		}
@@ -186,6 +200,39 @@ void Character::update()
 	{
 		charSpeed = 50.0;
 
+	}
+
+	if (charPosition.y > 0) //speed limit
+	{
+		charPosition.y = 0.0;
+
+	}
+
+	if (isJump) {
+		isJumpp = true;
+		jump_time = 0;
+	}
+	else {
+		if (isJumpp) {
+			//
+			D3DXVECTOR2 cursorPosition;
+			cursorPosition.x = charPosition.x;
+			cursorPosition.y = charPosition.y - 128;
+			D3DXVECTOR2 offset = cursorPosition - charPosition;
+			D3DXVec2Normalize(&offset, &offset);
+			charVelocity = offset * 20;
+			//
+			charVelocity.y -= (200 / 6.0);
+			charPosition += (charVelocity / 60.0);
+			if (jump_time >= 5)
+			{
+				isJumpp = false;
+			}
+			jump_time++;
+		}
+		else {
+			isJumpp = false;
+		}
 	}
 }
 

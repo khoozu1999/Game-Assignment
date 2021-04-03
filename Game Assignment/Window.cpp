@@ -22,6 +22,8 @@ void KZWindows::releaseInsrance()
 	sInstance = NULL;
 }
 
+bool isFullscreen = false;
+
 KZWindows::KZWindows()
 {
 	this->g_hWnd = NULL;
@@ -65,6 +67,8 @@ LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 	return 0;
 }
 
+
+
 void KZWindows::createWindows()
 {
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
@@ -80,11 +84,34 @@ void KZWindows::createWindows()
 	g_hWnd = CreateWindowEx(0, wndClass.lpszClassName, "Windows", WS_OVERLAPPEDWINDOW, 0, 100, 1080, 720, NULL, NULL, hInstance, NULL);
 	ShowWindow(g_hWnd, 1);
 
+	
 }
 
 void KZWindows::clearWindows()
 {
 	UnregisterClass(wndClass.lpszClassName, hInstance);
+}
+
+void KZWindows::fullscreen() {
+
+	if (d3dPP.Windowed == true)
+	{
+		d3dPP.Windowed = false;
+		d3dPP.BackBufferWidth = 1920;
+		d3dPP.BackBufferHeight = 1080;
+	}
+
+	else if (d3dPP.Windowed == false)
+	{
+		d3dPP.Windowed = true;
+		d3dPP.BackBufferWidth = 480;
+		d3dPP.BackBufferHeight = 640;
+	}
+
+	HRESULT hr = d3dDevice->Reset(&d3dPP);
+	if (FAILED(hr)) {
+		PostQuitMessage(0);
+	}
 }
 
 bool KZWindows::loop()
@@ -99,6 +126,12 @@ bool KZWindows::loop()
 		TranslateMessage(&msg);
 
 		DispatchMessage(&msg);
+
+		if (isFullscreen == true)
+		{
+			fullscreen();
+			isFullscreen = false;
+		}
 
 	}
 
