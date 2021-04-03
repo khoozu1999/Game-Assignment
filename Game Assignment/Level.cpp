@@ -12,29 +12,29 @@ Level::~Level()
 }
 
 void Level::init() {
-	Character::getInstance()->init();
+	//Character::getInstance()->init();
 	Background::getInstance()->init();
 	//Enemy::getInstance()->init();
 }
 void Level::fixedUpdate() {
-	Character::getInstance()->fixedUpdate();
+	//Character::getInstance()->fixedUpdate();
 	Background::getInstance()->fixedUpdate();
 	//Enemy::getInstance()->fixedUpdate();
 }
 void Level::update() {
-	Character::getInstance()->update();
+	//Character::getInstance()->update();
 	Background::getInstance()->fixedUpdate();
 	//Enemy::getInstance()->fixedUpdate();
 }
 void Level::draw() {
-	
+
+	//Character::getInstance()->draw();
 	Background::getInstance()->draw();
-	Character::getInstance()->draw();
 	//Enemy::getInstance()->draw();
 }
 void Level::release() {
-	Character::getInstance()->release();
-	Character::getInstance()->releaseInstance();
+	//Character::getInstance()->release();
+	//Character::getInstance()->releaseInstance();
 
 	Background::getInstance()->release();
 	Background::getInstance()->releaseInstance();

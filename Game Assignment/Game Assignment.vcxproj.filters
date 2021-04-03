@@ -104,6 +104,9 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game Assignment.rc">
