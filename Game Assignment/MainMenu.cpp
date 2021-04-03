@@ -5,6 +5,7 @@
 #include "GameStateManager.h"
 #include "DirectInput.h"
 
+
 MainMenu::MainMenu() {
 
 	titleSprite = NULL;

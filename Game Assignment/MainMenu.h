@@ -2,6 +2,7 @@
 #include <d3dx9.h>
 #include "GameState.h"
 
+
 #define GAMETITLE "Running Sim"
 
 class MainMenu : public GameState {
@@ -26,6 +27,7 @@ public:
 
 		LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;
+
 
 	LPD3DXSPRITE titleSprite;
 	LPD3DXFONT gameTitle;
