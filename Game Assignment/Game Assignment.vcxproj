@@ -146,9 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -160,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameState.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="GTime.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="resource.h" />

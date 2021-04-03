@@ -22,9 +22,12 @@ public:
 	LPDIRECT3DTEXTURE9 bgTexture3;
 	LPDIRECT3DTEXTURE9 bgTexture4;
 
+	
+
 
 	RECT spriteRect, backgroundRect;
 
+	
 
 	
 	

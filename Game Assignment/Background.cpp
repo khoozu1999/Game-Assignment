@@ -4,6 +4,8 @@
 #include "Graphic.h"
 #include "Background.h"
 #include "Windows.h"
+#include "Character.h"
+
 
 
 Background* Background::sInstance = NULL;
@@ -39,7 +41,7 @@ Background::Background() {
 
 Background::~Background()
 {
-
+	
 }
 
 void Background::init() {
@@ -60,6 +62,7 @@ void Background::update() {
 }
 void Background::fixedUpdate() {
 
+	
 }
 
 void Background::draw() {
