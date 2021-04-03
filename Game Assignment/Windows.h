@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "resource.h"
+#include <d3d9.h>
 
 class KZWindows
 {
@@ -24,6 +25,9 @@ public:
 	void clearWindows();
 	bool loop();
 	void stateChange();
+	void fullscreen();
+	D3DPRESENT_PARAMETERS d3dPP;
+	IDirect3DDevice9* d3dDevice;
 
 	int gameState = 1;
 };

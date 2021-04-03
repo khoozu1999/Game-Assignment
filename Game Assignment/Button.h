@@ -25,4 +25,4 @@ public:
 	LPD3DXSPRITE titleSprite;
 	LPD3DXFONT gameTitle;
 
-}
+};

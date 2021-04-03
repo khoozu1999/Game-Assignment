@@ -2,6 +2,7 @@
 #include "Level.h"
 #include "Character.h"
 #include "Background.h"
+//#include "MainMenu.h"
 
 
 //singleton
@@ -29,17 +30,13 @@ GameStateManager::GameStateManager()
 	framesToUpdate = 0;
 	preState = 0;
 
+	/*MainMenu* mainMenu = new MainMenu();
+	mainMenu->init();
+	stateList.push_back(mainMenu);*/
+
 	Level* level = new Level();
 	level->init();
 	stateList.push_back(level);
-
-	/*Character* character = new Character();
-	character->init();
-	stateList.push_back(character);*/
-
-	/*Background* background = new Background();
-	background->init();
-	stateList.push_back(background);*/
 
 	gTime = new GTime();
 	gTime->init(60);
