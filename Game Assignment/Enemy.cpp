@@ -1,28 +1,28 @@
-#include "Character.h"
+#include "Enemy.h"
 #include "GameState.h"
 #include "GameStateManager.h"
 #include "Graphic.h"
 #include "DirectInput.h"
 
-Character* Character::sInstance = NULL;
+Enemy* Enemy::sInstance = NULL;
 
-Character* Character::getInstance()
+Enemy* Enemy::getInstance()
 {
-	if (Character::sInstance == NULL)
+	if (Enemy::sInstance == NULL)
 	{
-		sInstance = new Character;
+		sInstance = new Enemy;
 	}
 
 	return sInstance;
 }
 
-void Character::releaseInstance()
+void Enemy::releaseInstance()
 {
 	delete sInstance;
 	sInstance = NULL;
 }
 
-Character::Character()
+Enemy::Enemy()
 {
 	charSprite = NULL;
 	charTexture = NULL;
@@ -33,7 +33,7 @@ Character::Character()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
-	position = { 0,-300,0 };
+	position = { 0,-30,0 };
 	charFrame = 0;
 	frameNum = 0;
 	charState = 0;
@@ -45,15 +45,15 @@ Character::Character()
 	isMoving = false;
 }
 
-Character::~Character()
+Enemy::~Enemy()
 {
 
 }
 
-void Character::init()
+void Enemy::init()
 {
 	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &charSprite);
-	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/pink1.png", D3DX_DEFAULT, D3DX_DEFAULT,
+	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemy2.png", D3DX_DEFAULT, D3DX_DEFAULT,
 		D3DX_DEFAULT, NULL, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED,
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
 		NULL, NULL, &charTexture);
@@ -63,9 +63,8 @@ void Character::init()
 		PostQuitMessage(0);
 	}
 
-	charSize.x = 64;
-	//charSize.y = 42.666;
-	charSize.y = 64;
+	charSize.x = 200;
+	charSize.y = 116.3;
 
 	charFrame = 0;
 	frameNum = 4;
@@ -82,7 +81,7 @@ void Character::init()
 	charRect->right = charRect->left + charSize.x;
 }
 
-void Character::fixedUpdate()
+void Enemy::fixedUpdate()
 {
 	if (isMoving)
 	{
@@ -124,7 +123,7 @@ void Character::fixedUpdate()
 	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &charPosition);
 }
 
-void Character::update()
+void Enemy::update()
 {
 	if (DirectInput::getInstance()->diKeys[DIK_UP] && DirectInput::getInstance()->diKeys[DIK_LEFT])
 	{
@@ -160,7 +159,7 @@ void Character::update()
 
 	else if (DirectInput::getInstance()->diKeys[DIK_LEFT])
 	{
-		charState = 1;
+		//charState = 1;
 		charDirection.x = -1;
 		charDirection.y = 0;
 		isMoving = true;
@@ -168,7 +167,7 @@ void Character::update()
 
 	else if (DirectInput::getInstance()->diKeys[DIK_RIGHT])
 	{
-		charState = 2;
+		//charState = 2;
 		charDirection.x = 1;
 		charDirection.y = 0;
 		isMoving = true;
@@ -177,19 +176,10 @@ void Character::update()
 	else
 	{
 		isMoving = false;
-		if (charSpeed == 0) {
-			charState = 0;
-		}
-	}
-
-	if (charSpeed > 50) //speed limit
-	{
-		charSpeed = 50.0;
-
 	}
 }
 
-void Character::draw()
+void Enemy::draw()
 {
 	if (GameStateManager::getInstance()->preState == 1)
 	{
@@ -207,7 +197,7 @@ void Character::draw()
 	charSprite->End();
 }
 
-void Character::release()
+void Enemy::release()
 {
 	charSprite->Release();
 	charSprite = NULL;
