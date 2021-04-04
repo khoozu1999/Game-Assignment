@@ -24,25 +24,18 @@ void Enemy::releaseInstance()
 
 Enemy::Enemy()
 {
-	charSprite = NULL;
-	charTexture = NULL;
-	ZeroMemory(&mat, sizeof(mat));
-	ZeroMemory(&charSize, sizeof(charSize));
-	ZeroMemory(&charSize, sizeof(charDirection));
-	ZeroMemory(&charSize, sizeof(charPosition));
-	ZeroMemory(&charSize, sizeof(charVelocity));
-	ZeroMemory(&charRect, sizeof(charRect));
+	
+	enemySprite = NULL;
+	enemy1 = NULL;
 
-	position = { 0,-650,0 };
-	charFrame = 0;
+	position = { 0, 0, 0 };
+	enemyFrame = 0;
 	frameNum = 0;
-	charState = 0;
+	enemyState = 0;
 	frameRate = 1.0f / frameNum;
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
-
-	isMoving = false;
 }
 
 Enemy::~Enemy()
@@ -50,159 +43,91 @@ Enemy::~Enemy()
 
 }
 
+
 void Enemy::init()
 {
-	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &charSprite);
-	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemy2.png", D3DX_DEFAULT, D3DX_DEFAULT,
+	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &enemySprite);
+	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemytest.png", D3DX_DEFAULT, D3DX_DEFAULT,
 		D3DX_DEFAULT, NULL, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED,
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
-		NULL, NULL, &charTexture);
+		NULL, NULL, &enemy1);
 
 	if (FAILED(hr))
 	{
 		PostQuitMessage(0);
 	}
 
-	charSize.x = 200;
-	charSize.y = 116.3;
+	enemySize.x = 51.2;
+	enemySize.y = 85.3;
 
-	charFrame = 0;
-	frameNum = 4;
-	animationSpeed = 12;
+	enemyFrame = 0;
+	frameNum = 5;
+	animationSpeed = 5;
 	frameRate = 1.0f / animationSpeed;
 	frameTimer = 0;
 
 	charSpeed = 0;
-	charDirection.y = 1;
+	enemyDirection.y = 1;
 
-	charRect->top = 0;
-	charRect->bottom = charRect->top + charSize.y;
-	charRect->left = charSize.x * charFrame;
-	charRect->right = charRect->left + charSize.x;
+	enemyRect->top = 0;
+	enemyRect->bottom = enemyRect->top + enemySize.y;
+	enemyRect->left = enemySize.x * enemyFrame;
+	enemyRect->right = enemyRect->left + enemySize.x;
+
+	enemyPosition.x = 400;
+	enemyPosition.y = 350;
+
+	enemyVelocity.x = 0;
+	enemyVelocity.y = 0;
 }
 
 void Enemy::fixedUpdate()
 {
-	if (isMoving)
-	{
-		charSpeed++;
-	}
-
-	if (charSpeed > 0)
-	{
-		animationSpeed = charSpeed / 2;
-		animationSpeed = max(animationSpeed, 4);
-		animationSpeed = min(animationSpeed, 20);
-		frameRate = 1.0f / animationSpeed;
-		frameTimer += 1.0f / 60;
-
-		if (!isMoving)
-		{
-			charSpeed--;
-			charSpeed = max(charSpeed, 0);
-			animationSpeed = min(charSpeed, 40);
-		}
-	}
-
-	charVelocity = charDirection * (charSpeed / 60.0f);
-	charPosition += charVelocity;
-
+	
+	animationSpeed = 5;
+	frameRate = 1.0f / animationSpeed;
+	frameTimer += 1.0f / 60;
 	if (frameTimer >= frameRate)
 	{
 		frameTimer -= frameRate;
-		charFrame++;
-		charFrame %= frameNum;
+		enemyFrame++;
+		enemyFrame %= frameNum;
 	}
 
-	charRect->top = charSize.y * charState;
-	charRect->bottom = charRect->top + charSize.y;
-	charRect->left = charSize.x * charFrame;
-	charRect->right = charRect->left + charSize.x;
+	enemyRect->top = enemySize.y * enemyState;
+	enemyRect->bottom = enemyRect->top + enemySize.y;
+	enemyRect->left = enemySize.x * enemyFrame;
+	enemyRect->right = enemyRect->left + enemySize.x;
 
-	D3DXVECTOR2 scaling(0.6f, 0.6f);
-	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &charPosition);
 }
 
 void Enemy::update()
 {
-	if (DirectInput::getInstance()->diKeys[DIK_UP] && DirectInput::getInstance()->diKeys[DIK_LEFT])
-	{
-		//charState = 1;
-		charDirection.x = -1;
-		charDirection.y = -1;
-		isMoving = true;
-	}
-
-	else if (DirectInput::getInstance()->diKeys[DIK_DOWN] && DirectInput::getInstance()->diKeys[DIK_RIGHT])
-	{
-		//charState = 2;
-		charDirection.x = 1;
-		charDirection.y = 1;
-		isMoving = true;
-	}
-
-	else if (DirectInput::getInstance()->diKeys[DIK_UP])
-	{
-		//charState = 3;
-		charDirection.x = 0;
-		charDirection.y = -1;
-		isMoving = true;
-	}
-
-	else if (DirectInput::getInstance()->diKeys[DIK_DOWN])
-	{
-		//charState = 0;
-		charDirection.x = 0;
-		charDirection.y = 1;
-		isMoving = true;
-	}
-
-	else if (DirectInput::getInstance()->diKeys[DIK_LEFT])
-	{
-		//charState = 1;
-		charDirection.x = -1;
-		charDirection.y = 0;
-		isMoving = true;
-	}
-
-	else if (DirectInput::getInstance()->diKeys[DIK_RIGHT])
-	{
-		//charState = 2;
-		charDirection.x = 1;
-		charDirection.y = 0;
-		isMoving = true;
-	}
-
-	else
-	{
-		isMoving = false;
-	}
+	/*enemyPosition.x++;
+	if (enemyPosition.x > 150) {
+		enemyPosition.x--;
+	}*/
+	
+	D3DXVECTOR2 scaling(1.5f, 1.5f);
+	enemySprite->SetTransform(&mat);
+	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &enemyPosition);
 }
 
 void Enemy::draw()
 {
-	if (GameStateManager::getInstance()->preState == 1)
-	{
-		D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &charSprite);
-		GameStateManager::getInstance()->preState = 5;
-	}
-
-	Graphic::getInstance()->red = 0;
-	Graphic::getInstance()->green = 0;
-	Graphic::getInstance()->blue = 0;
-
-	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
-	charSprite->SetTransform(&mat);
-	charSprite->Draw(charTexture, charRect, &position, NULL, D3DCOLOR_XRGB(255, 255, 255));
-	charSprite->End();
+	enemySprite->Begin(D3DXSPRITE_ALPHABLEND);
+	enemySprite->SetTransform(&mat);
+	enemySprite->Draw(enemy1, enemyRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
+	enemySprite->End();
 }
 
 void Enemy::release()
 {
-	charSprite->Release();
-	charSprite = NULL;
+	enemySprite->Release();
+	enemySprite = NULL;
 
-	charTexture->Release();
-	charTexture = NULL;
+	enemySprite->Release();
+	enemy1 = NULL;
 }
+
 

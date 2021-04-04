@@ -6,22 +6,27 @@ class Enemy
 {
 private:
 	static Enemy* sInstance;
-	Enemy();
-	~Enemy();
+	double min, max;
+	int enemyType;
+	bool forward;
 public:
 	static Enemy* getInstance();
 	static void releaseInstance();
-	HRESULT hr;
-	LPD3DXSPRITE charSprite;
-	D3DXVECTOR3 position;
-	RECT charRect[16];
-	LPDIRECT3DTEXTURE9 charTexture;
+	Enemy();
+	~Enemy();
 
-	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
+	HRESULT hr;
+	LPD3DXSPRITE enemySprite;
+	D3DXVECTOR3 position;
+	RECT enemyRect[16];
+	LPDIRECT3DTEXTURE9 enemy1;
+
+	D3DXVECTOR2 enemySize, enemyDirection, enemyPosition, enemyVelocity, location;
 	D3DXMATRIX mat;
-	int frameNum, charFrame, charState, spawnRate;
-	float frameRate, frameTimer, animationSpeed, charSpeed, spawnTime;
+	int frameNum, enemyFrame, enemyState, spawnRate, char_faceDirection;
+	float frameRate, frameTimer, animationSpeed, charSpeed, spawnTime, x, y;
 	bool isMoving;
+
 
 	void init();
 	void fixedUpdate();

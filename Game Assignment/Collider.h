@@ -10,12 +10,9 @@
 //
 //	float velocity;
 //	float gravity;
-//	float jumpingHeight;
 //	bool isCollider(D3DXVECTOR2 posCharacter, D3DXVECTOR2 sizeCharacter);
 //	/*bool isEnemyCollider(D3DXVECTOR2 posCharacter, D3DXVECTOR2 sizeCharacter, D3DXVECTOR2 posEnemy, D3DXVECTOR2 sizeEnemy);
 //	bool enemyCollider(D3DXVECTOR2 posEnemy, D3DXVECTOR2 sizeEnemy, D3DXVECTOR2 posStone, D3DXVECTOR2 sizeStone);
 //	bool isColliderDoor(D3DXVECTOR2 posCharacter, D3DXVECTOR2 sizeCharacter, D3DXVECTOR2 posDoor);*/
-//	bool isJump;
-//
 //};
 //#endif // !PHYSIC

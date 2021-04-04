@@ -82,6 +82,7 @@ void Character::init()
 	charVelocity.x = 0;
 	charVelocity.y = 0;
 	char_faceDirection = 1;
+	hp = 1;
 
 }
 
@@ -122,7 +123,7 @@ void Character::fixedUpdate()
 {
 
 	if (charPosition.y <= 150) {
-		charVelocity.y += (300 / 60.0);
+		charVelocity.y += (350 / 60.0);
 		charPosition += (charVelocity / 60.0);
 	}
 	else {
