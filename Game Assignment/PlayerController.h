@@ -1,42 +1,35 @@
 #pragma once
-#include <d3dx9.h>
-class PlayerController
-{
-private:
-
-	int speed;
-	int boundary;
-	int hp;
-	int jumpHeight, jumpCurrent;
-	int gravity;
-	bool jump;
-
-public:
-	D3DXVECTOR3 position;
-	PlayerController(int hp, int x, int y, int speed, int height);
-
-	void moveleft();
-	void moveright();
-	void jumpUp();
-
-	D3DXVECTOR3 getPosition();
-	int getJumpHeight();
-
-	void setJump(bool current);
-	bool getJump();
-
-	void setJumpCurrent(int num);
-	int getJumpCurrent();
-
-	void setGravity(int num);
-	int getGravity();
-
-	void gravityPull();
-	bool onFloor();
-
-	void animation();
-
-};
-
-
-
+//#include <d3dx9.h>
+//#include "GameState.h"
+//
+//class Character
+//{
+//private:
+//	static Character* sInstance;
+//	int boundary;
+//	float force;
+//	Character();
+//	~Character();
+//public:
+//	static Character* getInstance();
+//	static void releaseInstance();
+//	HRESULT hr;
+//	LPD3DXSPRITE charSprite;
+//	RECT charRect[16];
+//	LPDIRECT3DTEXTURE9 charTexture;
+//
+//	D3DXVECTOR3 position, speed;
+//
+//	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
+//	D3DXMATRIX mat;
+//	int frameNum, charFrame, charState, jump_time;
+//	float frameRate, frameTimer, animationSpeed, charSpeed;
+//	bool isMoving, isJump, isJumpp;
+//
+//	void init();
+//	void fixedUpdate();
+//	void update();
+//	void draw();
+//	void release();
+//};
+//
