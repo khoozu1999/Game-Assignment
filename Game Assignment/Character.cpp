@@ -109,11 +109,11 @@ void Character::update()
 		charVelocity.x = 0;
 		isMoving = false;
 	}
-	if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
+	if (DirectInput::getInstance()->diKeys[DIK_SPACE] && charPosition.y == 150){
 		isMoving = true;
 		D3DXVECTOR2 jumpDirection = D3DXVECTOR2(sin(0 / 180 * 3.142), -cos(0 / 180 * 3.142));
 		jumpDirection.x *= char_faceDirection;
-		charVelocity = (jumpDirection * 100);
+		charVelocity = (jumpDirection * 250);
 	}
 
 }
