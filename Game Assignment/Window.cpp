@@ -97,7 +97,7 @@ void KZWindows::fullscreen() {
 	if (d3dPP.Windowed == true)
 	{
 		d3dPP.Windowed = false;
-		d3dPP.BackBufferWidth = 1920;
+		d3dPP.BackBufferWidth = 480;
 		d3dPP.BackBufferHeight = 1080;
 	}
 

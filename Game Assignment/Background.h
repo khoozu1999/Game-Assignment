@@ -18,18 +18,11 @@ public:
 
 	LPD3DXSPRITE bgSprite;
 	LPDIRECT3DTEXTURE9 bgTexture1;
-	LPDIRECT3DTEXTURE9 bgTexture2;
-	LPDIRECT3DTEXTURE9 bgTexture3;
-	LPDIRECT3DTEXTURE9 bgTexture4;
-
 	
-
 
 	RECT spriteRect, backgroundRect;
 
-	
 
-	
 	
 	void init();
 	void fixedUpdate();

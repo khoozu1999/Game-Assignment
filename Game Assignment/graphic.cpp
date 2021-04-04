@@ -39,8 +39,8 @@ void Graphic::createDirectX()
 	d3dPP.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	d3dPP.BackBufferFormat = D3DFMT_X8R8G8B8;
 	d3dPP.BackBufferCount = 1;
-	d3dPP.BackBufferWidth = 352;
-	d3dPP.BackBufferHeight = 224;
+	d3dPP.BackBufferWidth = 720;
+	d3dPP.BackBufferHeight = 520;
 	d3dPP.hDeviceWindow = KZWindows::getInstance()->g_hWnd;
 
 	HRESULT hr = direct3D9->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, KZWindows::getInstance()->g_hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dPP, &d3dDevice);

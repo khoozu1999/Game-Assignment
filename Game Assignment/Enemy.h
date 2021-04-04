@@ -19,8 +19,8 @@ public:
 
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
 	D3DXMATRIX mat;
-	int frameNum, charFrame, charState;
-	float frameRate, frameTimer, animationSpeed, charSpeed;
+	int frameNum, charFrame, charState, spawnRate;
+	float frameRate, frameTimer, animationSpeed, charSpeed, spawnTime;
 	bool isMoving;
 
 	void init();

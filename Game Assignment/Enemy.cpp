@@ -33,7 +33,7 @@ Enemy::Enemy()
 	ZeroMemory(&charSize, sizeof(charVelocity));
 	ZeroMemory(&charRect, sizeof(charRect));
 
-	position = { 0,-30,0 };
+	position = { 0,-650,0 };
 	charFrame = 0;
 	frameNum = 0;
 	charState = 0;
