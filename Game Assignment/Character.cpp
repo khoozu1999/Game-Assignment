@@ -29,7 +29,7 @@ Character::Character()
 	charTexture = NULL;
 
 
-	position = { 120, -40, 0 };
+	position = { 100, -220, 0 };
 	charFrame = 0;
 	frameNum = 0;
 	charState = 0;
@@ -171,8 +171,8 @@ void Character::fixedUpdate()
 	charRect->left = charSize.x * charFrame;
 	charRect->right = charRect->left + charSize.x;
 
-	D3DXVECTOR2 scaling(0.6f, 0.6f);
-	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &charPosition);
+	//D3DXVECTOR2 scaling(0.6f, 0.6f);
+	D3DXMatrixTransformation2D(&mat, NULL, 0.0, NULL, NULL, 0, &charPosition);
 }
 
 void Character::draw()
