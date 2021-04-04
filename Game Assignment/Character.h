@@ -6,6 +6,8 @@ class Character
 {
 private:
 	static Character* sInstance;
+	int boundary;
+	float force;
 	Character();
 	~Character();
 public:
@@ -13,15 +15,18 @@ public:
 	static void releaseInstance();
 	HRESULT hr;
 	LPD3DXSPRITE charSprite;
-	D3DXVECTOR3 position;
 	RECT charRect[16];
 	LPDIRECT3DTEXTURE9 charTexture;
 
+	D3DXVECTOR3 position, speed;
+
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
 	D3DXMATRIX mat;
-	int frameNum, charFrame, charState, jump_time;
+	int frameNum, charFrame, charState, jump_time, char_faceDirection;
 	float frameRate, frameTimer, animationSpeed, charSpeed;
-	bool isMoving, isJump, isJumpp;
+	bool isMoving;
+	//
+
 
 	void init();
 	void fixedUpdate();
