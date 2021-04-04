@@ -12,12 +12,21 @@ private:
 	~GameStateManager();
 
 public:
+	enum State
+	{
+		MAIN_MENU,
+		LEVEL,
+		LOSE_MENU
+
+	};
 	static GameStateManager* getInstance();
 	static void releaseInsrance();
 
 	int currentState, preState, framesToUpdate;
 	std::vector<GameState*> stateList;
-
+	
+		
+	
 	GTime* gTime;
 
 	void update();

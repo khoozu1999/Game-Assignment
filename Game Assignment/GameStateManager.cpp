@@ -31,9 +31,9 @@ GameStateManager::GameStateManager()
 	framesToUpdate = 0;
 	preState = 0;
 
-	/*MainMenu* mainMenu = new MainMenu();
+	MainMenu* mainMenu = new MainMenu();
 	mainMenu->init();
-	stateList.push_back(mainMenu);*/
+	stateList.push_back(mainMenu);
 
 
 

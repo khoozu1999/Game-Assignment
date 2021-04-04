@@ -7,7 +7,7 @@
 
 MainMenu::MainMenu() {
 
-	titleSprite = NULL;
+	sprite = NULL;
 
 }
 
@@ -17,38 +17,38 @@ MainMenu:: ~MainMenu() {
 
 void MainMenu::init() {
 
+
+
+	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
+
+	 D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/background.png", &background); 
+
+
+	 D3DXCreateFont(Graphic::getInstance()->d3dDevice, 60, 0, 0, FW_BOLD, false,
+		 DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
+		 DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &gameTitle);
+
+	 D3DXCreateFont(Graphic::getInstance()->d3dDevice, 30, 0, 0, 1, false,
+		 DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
+		 DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &font);
+	 
 	
+	 gameTitleRect.left =180;
+	 gameTitleRect.top = 130;
+	 gameTitleRect.right = 800;
+	 gameTitleRect.bottom = 600;
 
-	timer = 0;
-
-
-	 D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &titleSprite);
-	 D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/background.png", &background);
-	 D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/gameTitle.png", &gameTitle);
-	 D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/button.png", &buttonImage);
-	 D3DXCreateFont(Graphic::getInstance()->d3dDevice, 25, 0, 0, 1, false,
-		DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
-		DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &font);
-
-	
-	gameTitleRect.left = gameTitleRect.top = 0;
-	gameTitleRect.right = 40;
-    gameTitleRect.bottom = 60;
-
-	rectFont.left = 50;
-	rectFont.top = 160;
-	rectFont.right = 350;
-	rectFont.bottom = 300;
+	 fontRect.left = 200;
+	 fontRect.top = 300;
+	 fontRect.right = 520;
+	 fontRect.bottom = 600;
 
 	backgroundRect.top = 0;
 	backgroundRect.bottom =520;
 	backgroundRect.left = 0;
 	backgroundRect.right = 720;
 
-	gameTitleRect.top = 10;
-	gameTitleRect.left = 10;
-	gameTitleRect.bottom = gameTitleRect.top + 100;
-	gameTitleRect.right = gameTitleRect.left + 200;
+	
 
 	//Start Button
 	//Button* button = new Button;
@@ -60,6 +60,13 @@ void MainMenu::init() {
 
 void MainMenu::update() {
 
+		/*if (DirectInput::getInstance()->isKeyDown(DIK_RETURN))
+		{
+			release();
+			GameStateManager::getInstance()->currentState = GameStateManager::LEVEL;
+			init();
+		}*/
+	
 }
 
 void MainMenu::fixedUpdate() {
@@ -69,28 +76,25 @@ void MainMenu::fixedUpdate() {
 void MainMenu::draw() {
 
 	
-	titleSprite->Begin(D3DXSPRITE_ALPHABLEND);
+	sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
-	titleSprite-> Draw(background, &backgroundRect, NULL, NULL, D3DCOLOR_XRGB(255, 255,255));
-	titleSprite->Draw(gameTitle, &gameTitleRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
+	sprite->Draw(background, &backgroundRect, NULL, NULL, D3DCOLOR_XRGB(255, 255,255));
+	gameTitle->DrawText(sprite, TITLE,-1, &gameTitleRect, 0, D3DCOLOR_XRGB(255, 255, 0));
+	font->DrawText(sprite, "Press \"Enter\" to Play", -1, &fontRect, DT_CENTER, D3DCOLOR_XRGB(255, 255, 0));
 	
-	
-	titleSprite->End();
+	sprite->End();
 }
 
 void MainMenu::release() {
 
-	titleSprite->Release();
-	titleSprite = NULL;
+	sprite->Release();
+	sprite = NULL;
 
-	buttonImage->Release();
-	buttonImage = NULL;
 
 	background->Release();
 	background = NULL;
 
-	font->Release();
-	font = NULL;
+
 
 	gameTitle->Release();
 	gameTitle = NULL;
