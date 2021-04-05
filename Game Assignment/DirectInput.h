@@ -23,7 +23,7 @@ public:
 	DIMOUSESTATE mouseState;
 	int mouseMoveX, mouseMoveY, mousePosX, mousePosY;
 	int mouseButton[3];
-	bool isKeyDown(int index);
+	
 
 	void CreateInput();
 	void InputLoop();

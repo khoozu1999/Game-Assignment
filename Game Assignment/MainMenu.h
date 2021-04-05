@@ -20,9 +20,11 @@ public:
 	RECT gameTitleRect;
 	RECT backgroundRect;
 	RECT fontRect;
+	RECT fontRect2;
 
 	
 	LPD3DXFONT font;
+	LPD3DXFONT font2;
 	LPD3DXSPRITE sprite;
 	LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;

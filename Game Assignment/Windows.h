@@ -17,6 +17,7 @@ public:
 	WNDCLASS wndClass;
 	HINSTANCE hInstance;
 	int keyIn, mouseX, mouseY;
+	int gameState = 1;
 
 	static KZWindows* getInstance();
 	static void releaseInsrance();
@@ -29,7 +30,7 @@ public:
 	D3DPRESENT_PARAMETERS d3dPP;
 	IDirect3DDevice9* d3dDevice;
 
-	int gameState = 1;
+	
 };
 
 #endif

@@ -126,8 +126,8 @@ void Enemy::release()
 	enemySprite->Release();
 	enemySprite = NULL;
 
-	enemySprite->Release();
-	enemy1 = NULL;
+	/*enemySprite->Release();
+	enemy1 = NULL;*/
 }
 
 

@@ -5,17 +5,17 @@
 
 int main()
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
-//This is the testing command line look here
+
 {
 	KZWindows* windows = KZWindows::getInstance();
 	windows->createWindows();
-
 	Graphic::getInstance()->createDirectX();
 	DirectInput::getInstance()->CreateInput();
 
 	while (windows->loop())
 	{
-
+		
+		GameStateManager::getInstance()->update();
 	}
 
 	windows->clearWindows();
@@ -28,5 +28,5 @@ int main()
 	GameStateManager::getInstance()->releaseInsrance();
 
 	return 0;
-	//hello nicholas
+	
 }

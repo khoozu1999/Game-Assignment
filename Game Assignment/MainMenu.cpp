@@ -31,6 +31,10 @@ void MainMenu::init() {
 	 D3DXCreateFont(Graphic::getInstance()->d3dDevice, 30, 0, 0, 1, false,
 		 DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
 		 DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &font);
+
+	 D3DXCreateFont(Graphic::getInstance()->d3dDevice, 30, 0, 0, 1, false,
+		 DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
+		 DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &font2);
 	 
 	
 	 gameTitleRect.left =180;
@@ -39,9 +43,14 @@ void MainMenu::init() {
 	 gameTitleRect.bottom = 600;
 
 	 fontRect.left = 200;
-	 fontRect.top = 300;
+	 fontRect.top = 250;
 	 fontRect.right = 520;
 	 fontRect.bottom = 600;
+
+	 fontRect2.left = 200;
+	 fontRect2.top = 300;
+	 fontRect2.right = 520;
+	 fontRect2.bottom = 700;
 
 	backgroundRect.top = 0;
 	backgroundRect.bottom =520;
@@ -49,23 +58,16 @@ void MainMenu::init() {
 	backgroundRect.right = 720;
 
 	
-
-	//Start Button
-	//Button* button = new Button;
-	//button->position.x = BUFFER_WIDTH / 2;
-	//button->position.y = 500;
-	//button->size.x = 259;
-	//button->size.y = 84;
 }
 
 void MainMenu::update() {
 
-		/*if (DirectInput::getInstance()->isKeyDown(DIK_RETURN))
+	if (DirectInput::getInstance()->diKeys[DIK_RETURN])
 		{
 			release();
-			GameStateManager::getInstance()->currentState = GameStateManager::LEVEL;
+			GameStateManager::getInstance()->currentState = 1;
 			init();
-		}*/
+		}
 	
 }
 
@@ -81,6 +83,7 @@ void MainMenu::draw() {
 	sprite->Draw(background, &backgroundRect, NULL, NULL, D3DCOLOR_XRGB(255, 255,255));
 	gameTitle->DrawText(sprite, TITLE,-1, &gameTitleRect, 0, D3DCOLOR_XRGB(255, 255, 0));
 	font->DrawText(sprite, "Press \"Enter\" to Play", -1, &fontRect, DT_CENTER, D3DCOLOR_XRGB(255, 255, 0));
+	font2->DrawText(sprite, "Press \"Esc\" to Exit", -1, &fontRect2, DT_CENTER, D3DCOLOR_XRGB(255, 255, 0));
 	
 	sprite->End();
 }
@@ -90,11 +93,8 @@ void MainMenu::release() {
 	sprite->Release();
 	sprite = NULL;
 
-
 	background->Release();
 	background = NULL;
-
-
 
 	gameTitle->Release();
 	gameTitle = NULL;

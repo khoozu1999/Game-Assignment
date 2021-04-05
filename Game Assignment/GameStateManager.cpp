@@ -27,7 +27,7 @@ void GameStateManager::releaseInsrance()
 
 GameStateManager::GameStateManager()
 {
-	currentState = 1;
+	currentState = 0;
 	framesToUpdate = 0;
 	preState = 0;
 
