@@ -4,8 +4,11 @@
 #include "Graphic.h"
 #include "DirectInput.h"
 #include "Collider.h"
+#include "Enemy.h"
 
 Character* Character::sInstance = NULL;
+
+Collider* collider = new Collider;
 
 Character* Character::getInstance()
 {
@@ -77,7 +80,7 @@ void Character::init()
 	charRect->right = charRect->left + charSize.x;
 
 	charPosition.x = 100;
-	charPosition.y = 150;
+	charPosition.y = 350;
 
 	charVelocity.x = 0;
 	charVelocity.y = 0;
@@ -110,26 +113,22 @@ void Character::update()
 		charVelocity.x = 0;
 		isMoving = false;
 	}
-	if (DirectInput::getInstance()->diKeys[DIK_SPACE] && charPosition.y == 150){
+	if (DirectInput::getInstance()->diKeys[DIK_SPACE] && charPosition.y == 350){
 		isMoving = true;
 		D3DXVECTOR2 jumpDirection = D3DXVECTOR2(sin(0 / 180 * 3.142), -cos(0 / 180 * 3.142));
 		jumpDirection.x *= char_faceDirection;
 		charVelocity = (jumpDirection * 250);
 	}
 
+	
+	
+
 }
 
 void Character::fixedUpdate()
 {
 
-	if (charPosition.y <= 150) {
-		charVelocity.y += (350 / 60.0);
-		charPosition += (charVelocity / 60.0);
-	}
-	else {
-		charVelocity.y = 0;
-		charPosition.y = 150;
-	}
+	
 
 	if (isMoving)
 	{
@@ -167,10 +166,30 @@ void Character::fixedUpdate()
 		charFrame %= frameNum;
 	}
 
+	bool isCollEnemy = false;
+	if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 1.5f)) {
+		isCollEnemy = true;
+	}
+
+	if (isCollEnemy)
+	{
+		charVelocity.x = 0;
+		isMoving = false;
+	}
+
 	charRect->top = charSize.y * charState;
 	charRect->bottom = charRect->top + charSize.y;
 	charRect->left = charSize.x * charFrame;
 	charRect->right = charRect->left + charSize.x;
+
+	if (charPosition.y <= 350) {
+		charVelocity.y += (350 / 60.0);
+		charPosition += (charVelocity / 60.0);
+	}
+	else {
+		charVelocity.y = 0;
+		charPosition.y = 350;
+	}
 
 	//D3DXVECTOR2 scaling(0.6f, 0.6f);
 	D3DXMatrixTransformation2D(&mat, NULL, 0.0, NULL, NULL, 0, &charPosition);
@@ -180,7 +199,7 @@ void Character::draw()
 {
 	charSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	charSprite->SetTransform(&mat);
-	charSprite->Draw(charTexture, charRect, &position, NULL, D3DCOLOR_XRGB(255, 255, 255));
+	charSprite->Draw(charTexture, charRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
 	charSprite->End();
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <d3dx9.h>
 #include "GameState.h"
+class Character;
 
 class Enemy
 {
