@@ -114,22 +114,22 @@ void Enemy::fixedUpdate()
 	enemyRect->left = enemySize.x * enemyFrame;
 	enemyRect->right = enemyRect->left + enemySize.x;
 
-	//D3DXVECTOR2 offset = targetPosition[currentTargetIndex] - enemyPosition;
-	//D3DXVECTOR2 direction;
-	//D3DXVec2Normalize(&direction, &offset);
-	//float lenght = D3DXVec2Length(&offset);
-	//if (lenght < 5) { //Once reah posision
-	//	//change target index
-	//	currentTargetIndex += targetIndexDirection;
+	D3DXVECTOR2 offset = targetPosition[currentTargetIndex] - enemyPosition;
+	D3DXVECTOR2 direction;
+	D3DXVec2Normalize(&direction, &offset);
+	float lenght = D3DXVec2Length(&offset);
+	if (lenght < 5) { //Once reah posision
+		//change target index
+		currentTargetIndex += targetIndexDirection;
 
-	//	if (currentTargetIndex == 2) {
-	//		targetIndexDirection = -1;
-	//	}
-	//	else if (currentTargetIndex == 0) {
-	//		targetIndexDirection = 1;
-	//	}
-	//}
-	//enemyPosition += ((direction * 80) / 60.0);
+		if (currentTargetIndex == 2) {
+			targetIndexDirection = -1;
+		}
+		else if (currentTargetIndex == 0) {
+			targetIndexDirection = 1;
+		}
+	}
+	enemyPosition += ((direction * 80) / 60.0);
 
 	
 }
