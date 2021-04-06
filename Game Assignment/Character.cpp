@@ -167,7 +167,7 @@ void Character::fixedUpdate()
 	}
 
 	bool isCollEnemy = false;
-	if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 1.5f)) {
+	if (collider->isCollide(charPosition, charSize * 0.5, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
 		isCollEnemy = true;
 	}
 
