@@ -119,7 +119,7 @@ void Character::update()
 		isMoving = false;
 		isAttack = false;
 	}
-	if (DirectInput::getInstance()->diKeys[DIK_SPACE] && charPosition.y == 350){
+	if (DirectInput::getInstance()->diKeys[DIK_UP] && charPosition.y == 350){
 		isMoving = true;
 		D3DXVECTOR2 jumpDirection = D3DXVECTOR2(sin(0 / 180 * 3.142), -cos(0 / 180 * 3.142));
 		jumpDirection.x *= char_faceDirection;
@@ -166,8 +166,12 @@ void Character::fixedUpdate()
 		charFrame %= frameNum;
 	}
 
+	bool isCollEnemy = false;
+
+	if (Enemy::getInstance()->enemydie == false) {
+
 		if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
-			if (DirectInput::getInstance()->diKeys[DIK_A]) {
+			if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
 				;
 				if (isAttack == true) {
 					Enemy::getInstance()->enemyHP -= 1;
@@ -178,11 +182,6 @@ void Character::fixedUpdate()
 				isAttack = true;
 			}
 		}
-	
-
-	bool isCollEnemy = false;
-
-	if (Enemy::getInstance()->enemydie == false) {
 		if (collider->isCollide(charPosition, charSize * 0.5, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 0.5)) {
 			isCollEnemy = true;
 		}
