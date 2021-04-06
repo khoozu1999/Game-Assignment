@@ -48,7 +48,7 @@ Enemy::~Enemy()
 void Enemy::init()
 {
 	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &enemySprite);
-	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemy2.png", D3DX_DEFAULT, D3DX_DEFAULT,
+	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemy1.png", D3DX_DEFAULT, D3DX_DEFAULT,
 		D3DX_DEFAULT, NULL, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED,
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
 		NULL, NULL, &enemy1);
