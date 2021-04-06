@@ -81,6 +81,20 @@ void Enemy::init()
 
 	enemyVelocity.x = 0;
 	enemyVelocity.y = 0;
+
+	enemydie = false;
+
+	targetPosition[0].x = 300;
+	targetPosition[0].y = 330;
+
+	targetPosition[1].x = 500;
+	targetPosition[1].y = 330;
+
+	targetPosition[2].x = 200;
+	targetPosition[2].y = 330;
+
+	currentTargetIndex = 0;
+	targetIndexDirection = 1;
 }
 
 void Enemy::fixedUpdate()
@@ -101,6 +115,22 @@ void Enemy::fixedUpdate()
 	enemyRect->left = enemySize.x * enemyFrame;
 	enemyRect->right = enemyRect->left + enemySize.x;
 
+	D3DXVECTOR2 offset = targetPosition[currentTargetIndex] - enemyPosition;
+	D3DXVECTOR2 direction;
+	D3DXVec2Normalize(&direction, &offset);
+	float lenght = D3DXVec2Length(&offset);
+	if (lenght < 5) { //Once reah posision
+		//change target index
+		currentTargetIndex += targetIndexDirection;
+
+		if (currentTargetIndex == 2) {
+			targetIndexDirection = -1;
+		}
+		else if (currentTargetIndex == 0) {
+			targetIndexDirection = 1;
+		}
+	}
+	enemyPosition += ((direction * 100) / 60.0);
 }
 
 void Enemy::update()
@@ -119,7 +149,9 @@ void Enemy::draw()
 {
 	enemySprite->Begin(D3DXSPRITE_ALPHABLEND);
 	enemySprite->SetTransform(&mat);
-	enemySprite->Draw(enemy1, enemyRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
+	if (enemydie == false) {
+		enemySprite->Draw(enemy1, enemyRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
+	}
 	enemySprite->End();
 }
 

@@ -21,13 +21,13 @@ public:
 	D3DXVECTOR3 position;
 	RECT enemyRect[16];
 	LPDIRECT3DTEXTURE9 enemy1;
-
-	D3DXVECTOR2 enemySize, enemyDirection, enemyPosition, enemyVelocity, location;
+	D3DXVECTOR2 enemySize, enemyDirection, enemyPosition, enemyVelocity, location, targetPosition[3];
 	D3DXMATRIX mat;
-	int frameNum, enemyFrame, enemyState, spawnRate, char_faceDirection, enemyHP;
+
+	int frameNum, enemyFrame, enemyState, spawnRate, char_faceDirection, enemyHP, currentTargetIndex, targetIndexDirection;
 	float frameRate, frameTimer, animationSpeed, charSpeed, spawnTime, x, y;
 	bool isMoving;
-
+	bool enemydie;
 
 	void init();
 	void fixedUpdate();

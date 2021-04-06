@@ -152,7 +152,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -175,8 +174,6 @@
     <ClInclude Include="GTime.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="PlayerController.h" />
-    <ClInclude Include="Point2D.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Sound.h" />
