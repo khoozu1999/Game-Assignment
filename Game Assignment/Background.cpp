@@ -48,8 +48,13 @@ void Background::init() {
 	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/background.png", &bgTexture1);
 	
 
+	
+
 	spriteRect.left = spriteRect.top = 0;
 	spriteRect.right = spriteRect.bottom = 32;
+
+
+	
 }
 
 void Background::update() {
@@ -66,6 +71,8 @@ void Background::draw() {
 
 	bgSprite->Draw(bgTexture1, &backgroundRect, NULL, &drawPosition[1][1], D3DCOLOR_XRGB(255, 255, 255));
 	
+	
+
 	bgSprite->End();
 	
 }

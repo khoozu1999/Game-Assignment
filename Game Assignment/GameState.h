@@ -7,5 +7,9 @@ public:
 	virtual void update() = 0;
 	virtual void draw() = 0;
 	virtual void release() = 0;
+
+
+
+	virtual void restart() = 0;
 };
 

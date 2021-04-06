@@ -21,16 +21,20 @@ public:
 	RECT backgroundRect;
 	RECT fontRect;
 	RECT fontRect2;
+	RECT fontRect3;
+	RECT fontRect4;
 
 	
 	LPD3DXFONT font;
 	LPD3DXFONT font2;
+	LPD3DXFONT font3;
+	LPD3DXFONT font4;
 	LPD3DXSPRITE sprite;
 	LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;
 	LPD3DXFONT gameTitle;
 	
 
-	
+	void restart(){}
 	
 };

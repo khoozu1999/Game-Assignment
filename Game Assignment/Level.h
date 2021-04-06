@@ -12,5 +12,8 @@ public:
 	void update();
 	void draw();
 	void release();
+
+
+	void restart();
 };
 
