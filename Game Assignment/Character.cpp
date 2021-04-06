@@ -55,7 +55,7 @@ Character::~Character()
 void Character::init()
 {
 	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &charSprite);
-	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/pink1.png", D3DX_DEFAULT, D3DX_DEFAULT,
+	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/char.png", D3DX_DEFAULT, D3DX_DEFAULT,
 		D3DX_DEFAULT, NULL, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED,
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
 		NULL, NULL, &charTexture);
@@ -166,7 +166,7 @@ void Character::fixedUpdate()
 		charFrame %= frameNum;
 	}
 
-		if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 1.5)) {
+		if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
 			if (DirectInput::getInstance()->diKeys[DIK_A]) {
 				;
 				if (isAttack == true) {
@@ -183,7 +183,7 @@ void Character::fixedUpdate()
 	bool isCollEnemy = false;
 
 	if (Enemy::getInstance()->enemydie == false) {
-		if (collider->isCollide(charPosition, charSize * 0.5, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
+		if (collider->isCollide(charPosition, charSize * 0.5, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 0.5)) {
 			isCollEnemy = true;
 		}
 	}

@@ -36,7 +36,6 @@ Enemy::Enemy()
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
-
 	enemyHP = 10;
 }
 
@@ -49,7 +48,7 @@ Enemy::~Enemy()
 void Enemy::init()
 {
 	hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &enemySprite);
-	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemytest.png", D3DX_DEFAULT, D3DX_DEFAULT,
+	hr = D3DXCreateTextureFromFileEx(Graphic::getInstance()->d3dDevice, "resource/enemy2.png", D3DX_DEFAULT, D3DX_DEFAULT,
 		D3DX_DEFAULT, NULL, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED,
 		D3DX_DEFAULT, D3DX_DEFAULT, D3DCOLOR_XRGB(255, 255, 255), //change the XRGB to ignore the color
 		NULL, NULL, &enemy1);
@@ -59,11 +58,11 @@ void Enemy::init()
 		PostQuitMessage(0);
 	}
 
-	enemySize.x = 51.2;
-	enemySize.y = 85.3;
+	enemySize.x = 64;
+	enemySize.y = 64;
 
 	enemyFrame = 0;
-	frameNum = 5;
+	frameNum = 4;
 	animationSpeed = 5;
 	frameRate = 1.0f / animationSpeed;
 	frameTimer = 0;
@@ -77,7 +76,7 @@ void Enemy::init()
 	enemyRect->right = enemyRect->left + enemySize.x;
 
 	enemyPosition.x = 400;
-	enemyPosition.y = 330;
+	enemyPosition.y = 350;
 
 	enemyVelocity.x = 0;
 	enemyVelocity.y = 0;
@@ -85,13 +84,13 @@ void Enemy::init()
 	enemydie = false;
 
 	targetPosition[0].x = 300;
-	targetPosition[0].y = 330;
+	targetPosition[0].y = 350;
 
 	targetPosition[1].x = 500;
-	targetPosition[1].y = 330;
+	targetPosition[1].y = 350;
 
 	targetPosition[2].x = 200;
-	targetPosition[2].y = 330;
+	targetPosition[2].y = 350;
 
 	currentTargetIndex = 0;
 	targetIndexDirection = 1;
@@ -115,22 +114,24 @@ void Enemy::fixedUpdate()
 	enemyRect->left = enemySize.x * enemyFrame;
 	enemyRect->right = enemyRect->left + enemySize.x;
 
-	D3DXVECTOR2 offset = targetPosition[currentTargetIndex] - enemyPosition;
-	D3DXVECTOR2 direction;
-	D3DXVec2Normalize(&direction, &offset);
-	float lenght = D3DXVec2Length(&offset);
-	if (lenght < 5) { //Once reah posision
-		//change target index
-		currentTargetIndex += targetIndexDirection;
+	//D3DXVECTOR2 offset = targetPosition[currentTargetIndex] - enemyPosition;
+	//D3DXVECTOR2 direction;
+	//D3DXVec2Normalize(&direction, &offset);
+	//float lenght = D3DXVec2Length(&offset);
+	//if (lenght < 5) { //Once reah posision
+	//	//change target index
+	//	currentTargetIndex += targetIndexDirection;
 
-		if (currentTargetIndex == 2) {
-			targetIndexDirection = -1;
-		}
-		else if (currentTargetIndex == 0) {
-			targetIndexDirection = 1;
-		}
-	}
-	enemyPosition += ((direction * 100) / 60.0);
+	//	if (currentTargetIndex == 2) {
+	//		targetIndexDirection = -1;
+	//	}
+	//	else if (currentTargetIndex == 0) {
+	//		targetIndexDirection = 1;
+	//	}
+	//}
+	//enemyPosition += ((direction * 80) / 60.0);
+
+	
 }
 
 void Enemy::update()
@@ -140,9 +141,9 @@ void Enemy::update()
 		enemyPosition.x--;
 	}*/
 	
-	D3DXVECTOR2 scaling(1.5f, 1.5f);
+	//D3DXVECTOR2 scaling(1.5f, 1.5f);
 	enemySprite->SetTransform(&mat);
-	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, NULL, 0, &enemyPosition);
+	D3DXMatrixTransformation2D(&mat, NULL, 0.0, NULL, NULL, 0, &enemyPosition);
 }
 
 void Enemy::draw()
