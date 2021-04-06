@@ -6,6 +6,7 @@
 
 
 
+
 //singleton
 GameStateManager* GameStateManager::sInstance = NULL;
 
@@ -41,7 +42,8 @@ GameStateManager::GameStateManager()
 	level->init();
 	stateList.push_back(level);
 
-	
+
+
 
 	gTime = new GTime();
 	gTime->init(60);

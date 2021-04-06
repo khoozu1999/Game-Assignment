@@ -12,13 +12,7 @@ private:
 	~GameStateManager();
 
 public:
-	enum State
-	{
-		MAIN_MENU,
-		LEVEL,
-		LOSE_MENU
-
-	};
+	
 	static GameStateManager* getInstance();
 	static void releaseInsrance();
 

@@ -2,7 +2,8 @@
 #include "Character.h"
 #include "Background.h"
 #include "Enemy.h"
-#include "Graphic.h"
+#include "DirectInput.h"
+#include"GameStateManager.h"
 
 Level::Level() 
 {
@@ -28,6 +29,22 @@ void Level::update() {
 	Background::getInstance()->update();
 	Enemy::getInstance()->update();
 	Character::getInstance()->update();
+
+	if (DirectInput::getInstance()->diKeys[DIK_P])
+	{
+		release();
+		GameStateManager::getInstance()->currentState = 0;
+		init();
+	}
+	if (DirectInput::getInstance()->diKeys[DIK_R])
+	{
+		release();
+		GameStateManager::getInstance()->currentState = 1;
+		init();
+	}
+
+
+	
 }
 void Level::draw() {
 	Background::getInstance()->draw();
@@ -49,4 +66,11 @@ void Level::release() {
 
 	Character::getInstance()->release();
 	Character::getInstance()->releaseInstance();
+}
+
+
+
+
+void Level::restart() {
+
 }

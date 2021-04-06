@@ -9,13 +9,15 @@ public:
 	Level();
 	~Level();
 
-	int Timer;
-	//std::vector<Enemy*>EnemyList;
+
 	void init();
 	void fixedUpdate();
 	void update();
 	void draw();
 	void release();
+
+
+	void restart();
 	//std::string score;
 	//LPD3DXSPRITE sprite;
 	//LPD3DXFONT fscore;

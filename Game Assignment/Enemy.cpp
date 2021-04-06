@@ -77,7 +77,7 @@ void Enemy::init()
 	enemyRect->right = enemyRect->left + enemySize.x;
 
 	enemyPosition.x = 400;
-	enemyPosition.y = 350;
+	enemyPosition.y = 330;
 
 	enemyVelocity.x = 0;
 	enemyVelocity.y = 0;
