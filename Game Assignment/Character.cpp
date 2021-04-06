@@ -40,8 +40,11 @@ Character::Character()
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
+	charHP = 3;
 
 	isMoving = false;
+	isAttack = false;
+	ishurt = false;
 }
 
 Character::~Character()
@@ -85,14 +88,16 @@ void Character::init()
 	charVelocity.x = 0;
 	charVelocity.y = 0;
 	char_faceDirection = 1;
-	hp = 1;
+	ishurt = true;
 
 }
 
 void Character::update()
 {
+	printf("char: %d \n", charHP);
+	printf("enemy: %d \n", Enemy::getInstance()->enemyHP);
 	//printf("Character : %lf - %lf\n", charPosition.x, charPosition.y);
-
+	
 	if (DirectInput::getInstance()->diKeys[DIK_DOWN]) {
 		charVelocity.y++;
 		isMoving = true;
@@ -112,12 +117,19 @@ void Character::update()
 	else {
 		charVelocity.x = 0;
 		isMoving = false;
+		isAttack = false;
 	}
 	if (DirectInput::getInstance()->diKeys[DIK_SPACE] && charPosition.y == 350){
 		isMoving = true;
 		D3DXVECTOR2 jumpDirection = D3DXVECTOR2(sin(0 / 180 * 3.142), -cos(0 / 180 * 3.142));
 		jumpDirection.x *= char_faceDirection;
 		charVelocity = (jumpDirection * 250);
+	}
+
+	if (collider->attack(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
+		if (DirectInput::getInstance()->diKeys[DIK_A]) {
+			isAttack = true;
+		}
 	}
 
 	
@@ -156,9 +168,6 @@ void Character::fixedUpdate()
 		charState = 0;
 	}
 
-	/*charVelocity = charDirection * (charSpeed / 60.0f);
-	charPosition += charVelocity;*/
-
 	if (frameTimer >= frameRate)
 	{
 		frameTimer -= frameRate;
@@ -171,10 +180,27 @@ void Character::fixedUpdate()
 		isCollEnemy = true;
 	}
 
-	if (isCollEnemy)
+	if (isCollEnemy == true)
 	{
-		charVelocity.x = 0;
-		isMoving = false;
+		if (ishurt == true) {
+			charHP -= 1;
+			ishurt = false;
+		}
+	}
+	else {
+		ishurt = true;
+	}
+
+	if (isAttack == true) {
+		Enemy::getInstance()->enemyHP -= 1;
+		isAttack = false;
+	}
+
+	if (charHP == 0) {
+		GameStateManager::getInstance()->currentState = 0;
+		charPosition.x = 100;
+		charPosition.y = 350;
+		charHP += 3;
 	}
 
 	charRect->top = charSize.y * charState;
@@ -191,7 +217,6 @@ void Character::fixedUpdate()
 		charPosition.y = 350;
 	}
 
-	//D3DXVECTOR2 scaling(0.6f, 0.6f);
 	D3DXMatrixTransformation2D(&mat, NULL, 0.0, NULL, NULL, 0, &charPosition);
 }
 

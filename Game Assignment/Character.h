@@ -22,11 +22,11 @@ public:
 
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
 	D3DXMATRIX mat;
-	int frameNum, charFrame, charState, jump_time, char_faceDirection, hp;
+	int frameNum, charFrame, charState, jump_time, char_faceDirection, charHP;
 	float frameRate, frameTimer, animationSpeed, charSpeed;
 	bool isMoving;
-	
-
+	bool isAttack;
+	bool ishurt;
 
 	void init();
 	void fixedUpdate();

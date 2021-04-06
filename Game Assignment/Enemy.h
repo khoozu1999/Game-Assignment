@@ -24,7 +24,7 @@ public:
 
 	D3DXVECTOR2 enemySize, enemyDirection, enemyPosition, enemyVelocity, location;
 	D3DXMATRIX mat;
-	int frameNum, enemyFrame, enemyState, spawnRate, char_faceDirection;
+	int frameNum, enemyFrame, enemyState, spawnRate, char_faceDirection, enemyHP;
 	float frameRate, frameTimer, animationSpeed, charSpeed, spawnTime, x, y;
 	bool isMoving;
 

@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Background.h"
 #include "Enemy.h"
+#include "Graphic.h"
 
 Level::Level() 
 {
@@ -12,9 +13,11 @@ Level::~Level()
 }
 
 void Level::init() {
+	//sprite = NULL;
 	Background::getInstance()->init();
 	Enemy::getInstance()->init();
 	Character::getInstance()->init();
+
 }
 void Level::fixedUpdate() {
 	Background::getInstance()->fixedUpdate();
@@ -30,6 +33,10 @@ void Level::draw() {
 	Background::getInstance()->draw();
 	Enemy::getInstance()->draw();
 	Character::getInstance()->draw();
+	/*for (int i = 0; i < EnemyList.size(); i++)
+	{
+		EnemyList[i]->draw(Asteroid_texture, sprite);
+	}*/
 }
 
 void Level::release() {

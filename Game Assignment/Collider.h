@@ -9,5 +9,6 @@ public:
 	Collider();
 
 	bool isCollide(D3DXVECTOR2 positionA, D3DXVECTOR2 sizeA, D3DXVECTOR2 positionB, D3DXVECTOR2 sizeB);
+	bool attack(D3DXVECTOR2 positionA, D3DXVECTOR2 sizeA, D3DXVECTOR2 positionB, D3DXVECTOR2 sizeB);
 };
 #endif // !PHYSIC

@@ -36,6 +36,8 @@ Enemy::Enemy()
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
+
+	enemyHP = 10;
 }
 
 Enemy::~Enemy()
