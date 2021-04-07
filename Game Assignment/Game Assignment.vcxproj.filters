@@ -76,7 +76,7 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="GameWin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,9 +116,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -131,8 +128,11 @@
     <ClInclude Include="GameOver.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
     <ClInclude Include="GameWin.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
