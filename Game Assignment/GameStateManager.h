@@ -19,8 +19,6 @@ public:
 
 	int currentState, preState, framesToUpdate;
 	std::vector<GameState*> stateList;
-	
-	
 		
 	
 	GTime* gTime;

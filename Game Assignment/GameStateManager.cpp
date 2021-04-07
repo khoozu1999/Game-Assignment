@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Background.h"
 #include "MainMenu.h"
+#include "GameOver.h"
 
 
 
@@ -37,12 +38,14 @@ GameStateManager::GameStateManager()
 	stateList.push_back(mainMenu);
 
 
-
 	Level* level = new Level();
 	level->init();
 	stateList.push_back(level);
 
 
+	GameOver* gameOver = new GameOver();
+	gameOver->init();
+	stateList.push_back(gameOver);
 
 
 	gTime = new GTime();

@@ -150,6 +150,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="enemytest.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="Graphic.h" />

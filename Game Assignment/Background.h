@@ -13,9 +13,6 @@ public:
 	static void releaseInstance();
 	
 	D3DXVECTOR3 drawPosition[2][4];
-	D3DXVECTOR2 position;
-	D3DXVECTOR2 direction;
-	D3DXMATRIX matrix;
 	
 	HRESULT hr;
 	LPD3DXSPRITE bgSprite;
@@ -23,7 +20,6 @@ public:
 	
 
 	RECT spriteRect, backgroundRect;
-
 	
 	
 	void init();
