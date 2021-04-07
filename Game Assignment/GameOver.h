@@ -3,7 +3,7 @@
 #include <d3dx9.h>
 #include "GameState.h"
 
-class GameOver
+class GameOver : public GameState
 {
 public:
 	static GameOver* sInstance;

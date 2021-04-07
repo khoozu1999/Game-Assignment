@@ -168,7 +168,6 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="enemytest.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
