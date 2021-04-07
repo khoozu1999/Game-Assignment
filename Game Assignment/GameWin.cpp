@@ -74,7 +74,7 @@ void GameWin::draw() {
 
 	sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	sprite->Draw(background, &backgroundRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
-	gameWin->DrawText(sprite, "GAME OVER", -1, &gameWinRect, 0, D3DCOLOR_XRGB(255, 255, 0));
+	gameWin->DrawText(sprite, "GAME WIN", -1, &gameWinRect, 0, D3DCOLOR_XRGB(255, 255, 0));
 
 	font->DrawText(sprite, "R for Restart", -1, &fontRect, DT_RIGHT, D3DCOLOR_XRGB(255, 255, 0));
 	font2->DrawText(sprite, "Press \"Esc\" to Exit", -1, &fontRect2, DT_CENTER, D3DCOLOR_XRGB(255, 255, 0));

@@ -155,7 +155,6 @@
     <ClCompile Include="GameWin.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="UI.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="GTime.cpp" />
@@ -180,7 +179,6 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Sound.h" />
-    <ClInclude Include="UI.h" />
     <ClInclude Include="Windows.h" />
   </ItemGroup>
   <ItemGroup>
