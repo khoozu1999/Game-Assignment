@@ -1,6 +1,7 @@
 #pragma once
 #include <d3dx9.h>
 #include "GameState.h"
+#include "Sound.h"
 
 
 #define TITLE "RUNNING SIM"
@@ -11,6 +12,8 @@ public:
 	MainMenu();
 	~MainMenu();
 	
+	Sound* sound;
+
 	void init();
 	void update();
 	void fixedUpdate();
@@ -24,14 +27,15 @@ public:
 	RECT fontRect2;
 	RECT fontRect3;
 	RECT fontRect4;
-	RECT fontRect5;
+	
 
 	
 	LPD3DXFONT font;
 	LPD3DXFONT font2;
 	LPD3DXFONT font3;
 	LPD3DXFONT font4;
-	LPD3DXFONT font5;
+
+
 	LPD3DXSPRITE sprite;
 	LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;

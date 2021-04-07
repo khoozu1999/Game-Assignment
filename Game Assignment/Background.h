@@ -16,6 +16,7 @@ public:
 	
 	HRESULT hr;
 	LPD3DXSPRITE bgSprite;
+	LPD3DXSPRITE sprite;
 	LPDIRECT3DTEXTURE9 bgTexture1;
 	
 

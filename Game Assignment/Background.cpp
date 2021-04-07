@@ -46,7 +46,11 @@ void Background::init() {
 	HRESULT hr = D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &bgSprite);
 
 	hr = D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/background.png", &bgTexture1);
-	
+
+
+
+
+
 
 	
 
