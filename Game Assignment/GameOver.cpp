@@ -1,6 +1,8 @@
 #include "GameOver.h"
 #include "Graphic.h"
 #include "Background.h"
+#include "DirectInput.h"
+#include "GameStateManager.h"
 
 GameOver::GameOver(){
 
@@ -15,10 +17,6 @@ void GameOver::init() {
 	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
 
 	D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/background.png", &background);
-}
-
-void GameOver::update() {
-
 
 	D3DXCreateFont(Graphic::getInstance()->d3dDevice, 60, 0, 0, FW_BOLD, false,
 		DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
@@ -39,6 +37,16 @@ void GameOver::update() {
 	fontRect.top = 250;
 	fontRect.right = 520;
 	fontRect.bottom = 600;
+}
+
+void GameOver::update() {
+
+	if (DirectInput::getInstance()->diKeys[DIK_R])
+	{
+		release();
+		GameStateManager::getInstance()->currentState = 1;
+		init();
+	}
 }
 
 void GameOver::fixedUpdate() {

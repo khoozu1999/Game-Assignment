@@ -43,10 +43,6 @@ GameStateManager::GameStateManager()
 	stateList.push_back(level);
 
 
-	GameOver* gameOver = new GameOver();
-	gameOver->init();
-	stateList.push_back(gameOver);
-
 
 	gTime = new GTime();
 	gTime->init(60);
