@@ -23,12 +23,14 @@ public:
 	RECT fontRect2;
 	RECT fontRect3;
 	RECT fontRect4;
+	RECT fontRect5;
 
 	
 	LPD3DXFONT font;
 	LPD3DXFONT font2;
 	LPD3DXFONT font3;
 	LPD3DXFONT font4;
+	LPD3DXFONT font5;
 	LPD3DXSPRITE sprite;
 	LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;

@@ -4,6 +4,7 @@
 #include "Graphic.h"
 #include "GameStateManager.h"
 #include "DirectInput.h"
+#include "Level.h"
 
 MainMenu::MainMenu() {
 
@@ -46,6 +47,8 @@ void MainMenu::init() {
 		 DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
 		 DEFAULT_PITCH | FF_DONTCARE, "Century Schoolbook", &font4);
 
+
+
 	 
 	
 	 gameTitleRect.left =180;
@@ -70,11 +73,12 @@ void MainMenu::init() {
 	 fontRect3.bottom = 400;
 
 
-
 	 fontRect4.left = 200;
 	 fontRect4.top = 200;
 	 fontRect4.right = 350;
 	 fontRect4.bottom = 400;
+
+	
 
 	backgroundRect.top = 0;
 	backgroundRect.bottom =520;
@@ -92,7 +96,8 @@ void MainMenu::update() {
 			GameStateManager::getInstance()->currentState = 1;
 			init();
 		}
-	
+
+
 }
 
 void MainMenu::fixedUpdate() {
@@ -110,6 +115,8 @@ void MainMenu::draw() {
 	font2->DrawText(sprite, "Press \"Esc\" to Exit", -1, &fontRect2, DT_CENTER, D3DCOLOR_XRGB(255, 255, 0));
 	font3->DrawText(sprite, "P for Pause", -1, &fontRect3, DT_RIGHT, D3DCOLOR_XRGB(255, 255, 0));
 	font4->DrawText(sprite, "R for Restart", -1, &fontRect4, DT_RIGHT, D3DCOLOR_XRGB(255, 255, 0));
+	
+
 	
 	sprite->End();
 }

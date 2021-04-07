@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "GTime.h"
 
+
 class GameStateManager
 {
 private:
@@ -18,6 +19,7 @@ public:
 
 	int currentState, preState, framesToUpdate;
 	std::vector<GameState*> stateList;
+	
 	
 		
 	
