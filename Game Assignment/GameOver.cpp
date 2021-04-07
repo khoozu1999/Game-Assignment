@@ -76,3 +76,7 @@ void GameOver::release() {
 	gameOver->Release();
 	gameOver = NULL;
 }
+
+void GameOver::restart() {
+
+}

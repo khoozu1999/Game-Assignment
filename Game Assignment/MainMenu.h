@@ -5,7 +5,8 @@
 
 #define TITLE "RUNNING SIM"
 
-class MainMenu : public GameState {
+class MainMenu : public GameState 
+{
 public:
 	MainMenu();
 	~MainMenu();
