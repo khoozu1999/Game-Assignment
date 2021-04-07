@@ -11,6 +11,7 @@
 MainMenu::MainMenu() {
 
 	sprite = NULL;
+	Sound::getInstance()->play();
 	
 }
 
@@ -20,7 +21,7 @@ MainMenu:: ~MainMenu() {
 
 void MainMenu::init() {
 
-	Sound::getInstance()->play();
+
 
 	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
 
@@ -96,7 +97,9 @@ void MainMenu::update() {
 	if (DirectInput::getInstance()->diKeys[DIK_RETURN])
 		{
 			release();
+
 			GameStateManager::getInstance()->currentState = 1;
+			Sound::getInstance()->bgChannel->stop();
 			init();
 		}
 
@@ -136,9 +139,4 @@ void MainMenu::release() {
 
 	gameTitle->Release();
 	gameTitle = NULL;
-
-	/*sound->Release();
-	sound = NULL;*/
-	test->release();
-	system->release();
 }

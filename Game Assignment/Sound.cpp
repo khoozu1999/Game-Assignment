@@ -43,7 +43,7 @@ Sound::~Sound() {
 }
 
 int Sound::play() {
-    system->playSound(mainMenu, NULL, false, &sfxChannel);
+    system->playSound(mainMenu, NULL, false, &bgChannel);
     mainMenu->setMode(FMOD_LOOP_NORMAL);
 
     return 0;
@@ -53,9 +53,12 @@ int Sound::play() {
 //    return 0;
 //}
 //
-//int Sound::Release() {
-//    return 0;
-//}
+void Sound::Release() {
+    system->release();
+    system = NULL;
+    mainMenu->release();
+    mainMenu = NULL;
+}
 
 //int Sound::pause() {
 //

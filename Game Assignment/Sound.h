@@ -16,16 +16,16 @@ private:
     ~Sound();
 
     FMOD::System* system;
-    FMOD::Channel* sfxChannel;
     FMOD::Sound* mainMenu;
     float m_volume;
 public:
     static Sound* getInstance();
     static void releaseInstance();
+    FMOD::Channel* bgChannel;
     int play();
-
+    void Release();
     /*static int init();
-    static int Release();
+    
 
     
     int pause();
