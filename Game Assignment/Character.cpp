@@ -40,7 +40,7 @@ Character::Character()
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
-	charHP = 3;
+	charHP = 300;
 
 	isMoving = false;
 	/*isAttack = false;
@@ -208,7 +208,7 @@ void Character::fixedUpdate()
 	}
 
 	if (Enemy::getInstance()->enemyHP == 0) {
-		GameStateManager::getInstance()->currentState = 2;
+		GameStateManager::getInstance()->currentState = 3;
 		Enemy::getInstance()->enemydie = true;
 		
 	}

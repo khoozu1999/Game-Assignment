@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _CSOUND_H_
+#define _CSOUND_H_
 #include <fmod.h>
 
 #define SOUND_MAX 1.0f
@@ -31,3 +33,5 @@ public:
 
     int Update();
 };
+
+#endif

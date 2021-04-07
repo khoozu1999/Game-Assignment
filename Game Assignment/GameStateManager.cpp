@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "MainMenu.h"
 #include "GameOver.h"
+#include "GameWin.h"
 
 
 
@@ -45,6 +46,10 @@ GameStateManager::GameStateManager()
 	GameOver* gameOver = new GameOver();
 	gameOver->init();
 	stateList.push_back(gameOver);
+
+	GameWin* gameWin = new GameWin();
+	gameWin->init();
+	stateList.push_back(gameWin);
 
 	gTime = new GTime();
 	gTime->init(60);

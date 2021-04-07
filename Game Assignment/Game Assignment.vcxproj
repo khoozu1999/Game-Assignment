@@ -152,6 +152,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="GameWin.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="UI.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="GameWin.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="GTime.h" />
     <ClInclude Include="Level.h" />

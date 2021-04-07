@@ -9,7 +9,7 @@
 MainMenu::MainMenu() {
 
 	sprite = NULL;
-
+	
 }
 
 MainMenu:: ~MainMenu() {
@@ -19,6 +19,7 @@ MainMenu:: ~MainMenu() {
 void MainMenu::init() {
 
 	sound = new Sound("resource/sound/mainMenu.mp3",true);
+	sound->Init();
 	sound->play();
 
 	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
