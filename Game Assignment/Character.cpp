@@ -40,11 +40,9 @@ Character::Character()
 	frameTimer = 0;
 	animationSpeed = 0;
 	charSpeed = 0;
-	charHP = 300;
+	charHP = 3;
 
 	isMoving = false;
-	/*isAttack = false;
-	ishurt = false;*/
 }
 
 Character::~Character()
