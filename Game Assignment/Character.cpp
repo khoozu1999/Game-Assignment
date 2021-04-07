@@ -200,7 +200,7 @@ void Character::fixedUpdate()
 	}
 
 	if (charHP == 0) {
-		GameStateManager::getInstance()->currentState = 0;
+		GameStateManager::getInstance()->currentState = 2;
 		charPosition.x = 100;
 		charPosition.y = 350;
 		charHP += 3;
@@ -209,6 +209,7 @@ void Character::fixedUpdate()
 
 	if (Enemy::getInstance()->enemyHP == 0) {
 		Enemy::getInstance()->enemydie = true;
+		GameStateManager::getInstance()->currentState = 2;
 	}
 
 	charRect->top = charSize.y * charState;

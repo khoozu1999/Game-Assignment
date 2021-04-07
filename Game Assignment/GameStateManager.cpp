@@ -77,5 +77,5 @@ void GameStateManager::update()
 
 void GameStateManager::draw()
 {
-	stateList[currentState]->draw();
+ 	stateList[currentState]->draw();
 }
