@@ -5,6 +5,8 @@
 #include "GameStateManager.h"
 #include "DirectInput.h"
 #include "Level.h"
+#include "fmod.hpp"
+#include "Sound.h"
 
 MainMenu::MainMenu() {
 
@@ -18,9 +20,7 @@ MainMenu:: ~MainMenu() {
 
 void MainMenu::init() {
 
-	sound = new Sound("resource/sound/mainMenu.mp3",true);
-	sound->Init();
-	sound->play();
+	Sound::getInstance()->play();
 
 	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
 
@@ -100,7 +100,7 @@ void MainMenu::update() {
 			init();
 		}
 
-
+	system->update();
 }
 
 void MainMenu::fixedUpdate() {
@@ -137,6 +137,8 @@ void MainMenu::release() {
 	gameTitle->Release();
 	gameTitle = NULL;
 
-	sound->Release();
-	sound = NULL;
+	/*sound->Release();
+	sound = NULL;*/
+	test->release();
+	system->release();
 }
