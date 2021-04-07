@@ -2,7 +2,7 @@
 #ifndef _CSOUND_H_
 #define _CSOUND_H_
 #include <fmod.h>
-
+#include <fmod.hpp>
 #define SOUND_MAX 1.0f
 #define SOUND_MIN 0.0f
 #define SOUND_DEFAULT 0.5f
@@ -10,28 +10,31 @@
 
 class Sound {
 private:
-    static FMOD_SYSTEM* g_sound_system;
-
-    FMOD_SOUND* m_sound;
-    FMOD_CHANNEL* m_channel;
-
-    float m_volume;
-    FMOD_BOOL m_bool;
-public:
-    Sound(const char* path, bool loop);
+    static Sound* sInstance;
+    
+    Sound();
     ~Sound();
 
-    static int Init();
+    FMOD::System* system;
+    FMOD::Channel* sfxChannel;
+    FMOD::Sound* mainMenu;
+    float m_volume;
+public:
+    static Sound* getInstance();
+    static void releaseInstance();
+    int play();
+
+    /*static int init();
     static int Release();
 
-    int play();
+    
     int pause();
     int resume();
     int stop();
     int volumeUp();
     int volumeDown();
 
-    int Update();
+    int Update();*/
 };
 
 #endif

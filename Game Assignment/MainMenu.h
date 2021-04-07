@@ -2,6 +2,7 @@
 #include <d3dx9.h>
 #include "GameState.h"
 #include "Sound.h"
+#include "fmod.hpp"
 
 
 #define TITLE "RUNNING SIM"
@@ -12,7 +13,7 @@ public:
 	MainMenu();
 	~MainMenu();
 	
-	Sound* sound;
+	//Sound* sound;
 
 	void init();
 	void update();
@@ -40,6 +41,8 @@ public:
 	LPDIRECT3DTEXTURE9 buttonImage;
 	LPDIRECT3DTEXTURE9 background;
 	LPD3DXFONT gameTitle;
+	FMOD::System* system;
+	FMOD::Sound* test;
 	
 
 	void restart(){}

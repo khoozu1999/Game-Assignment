@@ -14,8 +14,9 @@ int main()
 
 	while (windows->loop())
 	{
-		
+		DirectInput::getInstance()->InputLoop();
 		GameStateManager::getInstance()->update();
+		Graphic::getInstance()->present();
 	}
 
 	windows->clearWindows();

@@ -1,91 +1,89 @@
 #include "Sound.h"
 #include "Windows.h"
 
-FMOD_SYSTEM* Sound::g_sound_system;
+Sound* Sound::sInstance = NULL;
 
-Sound::Sound(const char* path, bool loop) {
-    if (loop) {
-        FMOD_System_CreateSound(g_sound_system, path, FMOD_LOOP_NORMAL, 0, &m_sound);
-    }
-    else {
-        FMOD_System_CreateSound(g_sound_system, path, FMOD_DEFAULT, 0, &m_sound);
+Sound* Sound::getInstance()
+{
+    if (Sound::sInstance == NULL)
+    {
+        sInstance = new Sound;
     }
 
-    m_channel = nullptr;
-    m_volume = SOUND_DEFAULT;
+    return sInstance;
+}
+
+void Sound::releaseInstance()
+{
+    delete sInstance;
+    sInstance = NULL;
+}
+
+
+Sound::Sound() {
+    system = NULL;
+    FMOD::System_Create(&system);
+    FMOD_RESULT result = FMOD::System_Create(&system);
+    if (result != FMOD_OK) {
+        printf("FMOD ERROR! (%d)\n", result);
+    }
+    result = system->init(512, FMOD_INIT_NORMAL, 0);
+    if (result != FMOD_OK) {
+        printf("FMOD ERROR! (%d)\n", result);
+        exit(-1);
+    }
+
+    system->createSound("resource/sound/mainMenu.mp3", FMOD_DEFAULT, 0, &mainMenu);
+
 }
 
 Sound::~Sound() {
-    FMOD_Sound_Release(m_sound);
+    mainMenu->release();
+    mainMenu = NULL;
 }
-
-
-int Sound::Init() {
-    FMOD_System_Create(&g_sound_system);
-    FMOD_System_Init(g_sound_system, 32, FMOD_INIT_NORMAL, NULL);
-
-    return 0;
-}
-
-int Sound::Release() {
-    FMOD_System_Close(g_sound_system);
-    FMOD_System_Release(g_sound_system);
-
-    return 0;
-}
-
 
 int Sound::play() {
-    FMOD_System_PlaySound(g_sound_system, m_sound, NULL, false, &m_channel);
+    system->playSound(mainMenu, NULL, false, &sfxChannel);
+    mainMenu->setMode(FMOD_LOOP_NORMAL);
 
     return 0;
 }
 
-int Sound::pause() {
-    FMOD_Channel_SetPaused(m_channel, true);
+//int Sound::init() {
+//    return 0;
+//}
+//
+//int Sound::Release() {
+//    return 0;
+//}
 
-    return 0;
-}
-
-int Sound::resume() {
-    FMOD_Channel_SetPaused(m_channel, false);
-
-    return 0;
-}
-
-int Sound::stop() {
-    FMOD_Channel_Stop(m_channel);
-
-    return 0;
-}
-
-int Sound::volumeUp() {
-    if (m_volume < SOUND_MAX) {
-        m_volume += SOUND_WEIGHT;
-    }
-
-    FMOD_Channel_SetVolume(m_channel, m_volume);
-
-    return 0;
-}
-
-int Sound::volumeDown() {
-    if (m_volume > SOUND_MIN) {
-        m_volume -= SOUND_WEIGHT;
-    }
-
-    FMOD_Channel_SetVolume(m_channel, m_volume);
-
-    return 0;
-}
-
-
-int Sound::Update() {
-    FMOD_Channel_IsPlaying(m_channel, &m_bool);
-
-    if (m_bool) {
-        FMOD_System_Update(g_sound_system);
-    }
-
-    return 0;
-}
+//int Sound::pause() {
+//
+//    return 0;
+//}
+//
+//int Sound::resume() {
+//
+//    return 0;
+//}
+//
+//int Sound::stop() {
+//
+//    return 0;
+//}
+//
+//int Sound::volumeUp() {
+//
+//    return 0;
+//}
+//
+//int Sound::volumeDown() {
+//
+//    return 0;
+//}
+//
+//
+//int Sound::Update() {
+//
+//    return 0;
+//}
