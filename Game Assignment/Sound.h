@@ -12,18 +12,33 @@ class Sound {
 private:
     static Sound* sInstance;
     
-    Sound();
-    ~Sound();
 
     FMOD::System* system;
-    FMOD::Sound* mainMenu;
+   
+    FMOD::Channel* attackChannel;
+    FMOD::Channel* mainChannel;
+   
+
+    FMOD::Sound* attackSound;
+    FMOD::Sound* mainSound;
+
+
+
+    float m_volume;
 public:
     static Sound* getInstance();
     static void releaseInstance();
-    FMOD::Channel* bgChannel;
-    int play();
     void Release();
-
+    
+    
+   
+    void playAttackSound();
+    void playMainSound();
+  
+    
+    Sound();
+    ~Sound();
+  
 };
 
 #endif
