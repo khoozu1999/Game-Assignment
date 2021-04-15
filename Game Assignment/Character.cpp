@@ -139,8 +139,8 @@ void Character::fixedUpdate()
 	if (charSpeed > 0)
 	{
 		animationSpeed = charSpeed / 2;
-		animationSpeed = max(animationSpeed, 4);
-		animationSpeed = min(animationSpeed, 10);
+		animationSpeed = max(animationSpeed, 5);
+		animationSpeed = min(animationSpeed, 5);
 		frameRate = 1.0f / animationSpeed;
 		frameTimer += 1.0f / 60;
 
