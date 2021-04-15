@@ -17,24 +17,13 @@ private:
 
     FMOD::System* system;
     FMOD::Sound* mainMenu;
-    float m_volume;
 public:
     static Sound* getInstance();
     static void releaseInstance();
     FMOD::Channel* bgChannel;
     int play();
     void Release();
-    /*static int init();
-    
 
-    
-    int pause();
-    int resume();
-    int stop();
-    int volumeUp();
-    int volumeDown();
-
-    int Update();*/
 };
 
 #endif

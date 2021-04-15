@@ -1,5 +1,6 @@
 #include "Sound.h"
 #include "Windows.h"
+#include "GameStateManager.h"
 
 Sound* Sound::sInstance = NULL;
 
@@ -34,7 +35,6 @@ Sound::Sound() {
     }
 
     system->createSound("resource/sound/mainMenu.mp3", FMOD_DEFAULT, 0, &mainMenu);
-
 }
 
 Sound::~Sound() {
@@ -43,6 +43,7 @@ Sound::~Sound() {
 }
 
 int Sound::play() {
+
     system->playSound(mainMenu, NULL, false, &bgChannel);
     mainMenu->setMode(FMOD_LOOP_NORMAL);
 
@@ -56,6 +57,7 @@ int Sound::play() {
 void Sound::Release() {
     system->release();
     system = NULL;
+
     mainMenu->release();
     mainMenu = NULL;
 }

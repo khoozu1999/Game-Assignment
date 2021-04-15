@@ -130,8 +130,14 @@ void Enemy::fixedUpdate()
 		}
 	}
 	enemyPosition += ((direction * 80) / 60.0);
+	// enemy animation
+	if (currentTargetIndex == 0 || currentTargetIndex == 2) {
+		enemyState = 1;
+	}
 
-	
+	if (currentTargetIndex == 1 || currentTargetIndex == 3) {
+		enemyState = 2;
+	}
 }
 
 void Enemy::update()

@@ -4,9 +4,11 @@
 #include "Enemy.h"
 #include "DirectInput.h"
 #include"GameStateManager.h"
+#include "Sound.h"
 
 Level::Level() 
 {
+
 }
 
 Level::~Level()
@@ -18,7 +20,6 @@ void Level::init() {
 	Background::getInstance()->init();
 	Enemy::getInstance()->init();
 	Character::getInstance()->init();
-
 }
 void Level::fixedUpdate() {
 	Background::getInstance()->fixedUpdate();
