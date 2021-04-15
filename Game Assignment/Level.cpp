@@ -20,16 +20,19 @@ void Level::init() {
 	Background::getInstance()->init();
 	Enemy::getInstance()->init();
 	Character::getInstance()->init();
+	fieball.init();
 }
 void Level::fixedUpdate() {
 	Background::getInstance()->fixedUpdate();
 	Enemy::getInstance()->fixedUpdate();
 	Character::getInstance()->fixedUpdate();
+	fieball.fixedUpdate();
 }
 void Level::update() {
 	Background::getInstance()->update();
 	Enemy::getInstance()->update();
 	Character::getInstance()->update();
+	fieball.update();
 
 	if (DirectInput::getInstance()->diKeys[DIK_P])
 	{
@@ -53,22 +56,22 @@ void Level::draw() {
 	Background::getInstance()->draw();
 	Enemy::getInstance()->draw();
 	Character::getInstance()->draw();
-	/*for (int i = 0; i < EnemyList.size(); i++)
-	{
-		EnemyList[i]->draw(Asteroid_texture, sprite);
-	}*/
+	fieball.draw();
 }
 
 void Level::release() {
 
 	Background::getInstance()->release();
 	Background::getInstance()->releaseInstance();
+	
 
 	Enemy::getInstance()->release();
 	Enemy::getInstance()->releaseInstance();
+	
 
 	Character::getInstance()->release();
 	Character::getInstance()->releaseInstance();
+	
 }
 
 

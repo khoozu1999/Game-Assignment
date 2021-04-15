@@ -75,6 +75,9 @@
     <ClCompile Include="GameWin.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="fieball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectInput.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="GameWin.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="fieball.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

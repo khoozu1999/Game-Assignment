@@ -1,13 +1,13 @@
 #pragma once
 #include <d3dx9.h>
 #include "GameState.h"
+#include"Collider.h"
+
 
 class Character
 {
 private:
 	static Character* sInstance;
-	int boundary;
-	float force;
 	Character();
 	~Character();
 public:
@@ -17,7 +17,7 @@ public:
 	LPD3DXSPRITE charSprite;
 	RECT charRect[16];
 	LPDIRECT3DTEXTURE9 charTexture;
-
+	
 	D3DXVECTOR3 position, speed;
 
 	D3DXVECTOR2 charSize, charDirection, charPosition, charVelocity;
@@ -27,7 +27,7 @@ public:
 	bool isMoving;
 	bool isAttack;
 	bool ishurt;
-
+	//Collider collider;
 	void init();
 	void fixedUpdate();
 	void update();

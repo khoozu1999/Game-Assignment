@@ -2,6 +2,7 @@
 #include "Graphic.h"
 #include "GameStateManager.h"
 #include "DirectInput.h"
+#pragma warning(disable:4996)
 
 int main()
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)

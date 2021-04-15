@@ -6,6 +6,7 @@
 #include "Collider.h"
 #include "Enemy.h"
 
+
 Character* Character::sInstance = NULL;
 
 Collider* collider = new Collider;
@@ -47,7 +48,7 @@ Character::Character()
 
 Character::~Character()
 {
-
+	
 }
 
 void Character::init()
@@ -170,7 +171,7 @@ void Character::fixedUpdate()
 
 		if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
 			if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
-				;
+
 				if (isAttack == true) {
 					Enemy::getInstance()->enemyHP -= 1;
 					isAttack = false;

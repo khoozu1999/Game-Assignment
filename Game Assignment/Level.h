@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include<vector>
 #include <string>
+#include"fieball.h"
 
 class Level : public GameState
 {
@@ -9,6 +10,7 @@ public:
 	Level();
 	~Level();
 
+	fieball fieball;
 
 	void init();
 	void fixedUpdate();
