@@ -1,5 +1,6 @@
 #include "Sound.h"
 #include "Windows.h"
+#include "GameStateManager.h"
 
 Sound* Sound::sInstance = NULL;
 
@@ -21,7 +22,19 @@ void Sound::releaseInstance()
 
 
 Sound::Sound() {
+
     system = NULL;
+
+   
+    attackChannel = NULL;
+    mainChannel = NULL;
+   
+
+  
+    attackSound = NULL;
+    mainSound = NULL;
+   
+
     FMOD::System_Create(&system);
     FMOD_RESULT result = FMOD::System_Create(&system);
     if (result != FMOD_OK) {
@@ -33,31 +46,46 @@ Sound::Sound() {
         exit(-1);
     }
 
-    system->createSound("resource/sound/mainMenu.mp3", FMOD_DEFAULT, 0, &mainMenu);
-
+ 
+    system->createSound("resource/sound/attackSound.mp3", FMOD_DEFAULT, 0, &attackSound);
+    system->createSound("resource/sound/mainMenu.mp3", FMOD_DEFAULT, 0, &mainSound);
+    
 }
 
 Sound::~Sound() {
-    mainMenu->release();
-    mainMenu = NULL;
+
 }
 
-int Sound::play() {
-    system->playSound(mainMenu, NULL, false, &bgChannel);
-    mainMenu->setMode(FMOD_LOOP_NORMAL);
 
-    return 0;
+
+
+void Sound::playAttackSound() {
+    system->playSound(attackSound, NULL, false, &attackChannel);
+    attackSound->setMode(FMOD_LOOP_OFF);
 }
 
-//int Sound::init() {
-//    return 0;
-//}
-//
+void Sound::playMainSound() {
+    system->playSound(mainSound, NULL, false, &mainChannel);
+    mainSound->setMode(FMOD_LOOP_NORMAL);
+}
+
+
+
+
+
 void Sound::Release() {
     system->release();
     system = NULL;
-    mainMenu->release();
-    mainMenu = NULL;
+
+    
+  
+
+    attackSound->release();
+    attackSound = NULL;
+
+    mainSound->release();
+    mainSound = NULL;
+
 }
 
 //int Sound::pause() {

@@ -8,6 +8,7 @@ private:
 	static Background* sInstance;
 	Background();
 	~Background();
+
 public:
 	static Background* getInstance();
 	static void releaseInstance();

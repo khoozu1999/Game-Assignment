@@ -11,12 +11,12 @@
 MainMenu::MainMenu() {
 
 	sprite = NULL;
-	Sound::getInstance()->play();
+	Sound::getInstance()->playMainSound();
 	
 }
 
 MainMenu:: ~MainMenu() {
-
+	
 }
 
 void MainMenu::init() {
@@ -99,7 +99,6 @@ void MainMenu::update() {
 			release();
 
 			GameStateManager::getInstance()->currentState = 1;
-			Sound::getInstance()->bgChannel->stop();
 			init();
 		}
 
