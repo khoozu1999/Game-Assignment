@@ -155,6 +155,7 @@
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="GameWin.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="graphic.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="GTime.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Sound.h" />

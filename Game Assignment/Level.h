@@ -3,6 +3,7 @@
 #include<vector>
 #include <string>
 #include"fieball.h"
+#include "Particle.h"
 
 class Level : public GameState
 {
@@ -11,7 +12,7 @@ public:
 	~Level();
 
 	fieball fieball;
-
+	Particle particle;
 	void init();
 	void fixedUpdate();
 	void update();
@@ -20,11 +21,5 @@ public:
 
 
 	void restart();
-	//std::string score;
-	//LPD3DXSPRITE sprite;
-	//LPD3DXFONT fscore;
-	//RECT rectUI;
-
-	//void SpawnEnemy();
 };
 

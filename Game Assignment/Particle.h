@@ -1,13 +1,11 @@
 #pragma once
 #include <d3dx9.h>
-#include "Collider.h"
 
-
-class fieball
+class Particle
 {
 public:
-	fieball();
-	~fieball();
+	Particle();
+	~Particle();
 	HRESULT hr;
 	LPD3DXSPRITE sprite;
 	RECT rect[16];
@@ -15,11 +13,12 @@ public:
 
 	D3DXVECTOR3 position, speed;
 
-	D3DXVECTOR2 size, direction, velocity, positionf;
+	D3DXVECTOR2 pposition[1000];
+	D3DXVECTOR2 pvelocity[1000];
 	D3DXMATRIX mat;
-	int frameNum, Frame, State, jump_time, faceDirection, FireballDirect;
+	int particle_index;
 	float frameRate, frameTimer, animationSpeed, Speed;
-	
+
 
 	void init();
 	void fixedUpdate();
