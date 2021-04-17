@@ -188,7 +188,7 @@ void Character::fixedUpdate()
 		ishurt = true;
 	}
 
-	if (charHP == 0) {
+	if (charHP <= 0) {
 		GameStateManager::getInstance()->currentState = 2;
 		charPosition.x = 100;
 		charPosition.y = 350;
@@ -196,7 +196,7 @@ void Character::fixedUpdate()
 		Enemy::getInstance()->enemyHP = 10;
 	}
 
-	if (Enemy::getInstance()->enemyHP == 0) {
+	if (Enemy::getInstance()->enemyHP <= 0) {
 		GameStateManager::getInstance()->currentState = 3;
 		Enemy::getInstance()->enemyHP = 10;
 		
