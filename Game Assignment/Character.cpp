@@ -169,18 +169,6 @@ void Character::fixedUpdate()
 
 	if (Enemy::getInstance()->enemydie == false) {
 
-		if (collider->isCollide(charPosition, charSize, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
-			if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
-
-				if (isAttack == true) {
-					Enemy::getInstance()->enemyHP -= 1;
-					isAttack = false;
-				}
-			}
-			else {
-				isAttack = true;
-			}
-		}
 		if (collider->isCollide(charPosition, charSize * 0.5, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize * 0.5)) {
 			isCollEnemy = true;
 		}

@@ -105,7 +105,7 @@ void fieball::fixedUpdate()
 }
 void fieball::update()
 {
-	if (DirectInput::getInstance()->diKeys[DIK_A]) {
+	if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
 		
 		if (Character::getInstance()->char_faceDirection == 1) {
 			position.x = Character::getInstance()->charPosition.x + 50;

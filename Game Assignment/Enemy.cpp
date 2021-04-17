@@ -83,7 +83,7 @@ void Enemy::init()
 
 	enemydie = false;
 
-	targetPosition[0].x = 300;
+	targetPosition[0].x = 50;
 	targetPosition[0].y = 350;
 
 	targetPosition[1].x = 500;
