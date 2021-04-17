@@ -129,6 +129,7 @@ void fieball::update()
 	{
 		position.y = -500;
 		Enemy::getInstance()->enemyHP -= 1;
+		Sound::getInstance()->playEnemySound();
 	}
 }
 void fieball::draw()

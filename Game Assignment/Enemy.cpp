@@ -158,6 +158,7 @@ void Enemy::draw()
 	enemySprite->SetTransform(&mat);
 	if (enemydie == false) {
 		enemySprite->Draw(enemy1, enemyRect, NULL, NULL, D3DCOLOR_XRGB(255, 255, 255));
+		
 	}
 	enemySprite->End();
 }

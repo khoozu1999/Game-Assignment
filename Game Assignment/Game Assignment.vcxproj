@@ -147,7 +147,6 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -168,7 +167,6 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Coin.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Enemy.h" />
