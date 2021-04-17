@@ -60,7 +60,10 @@ Sound::~Sound() {
 
 }
 
+void Sound::update() {
 
+    system->update();
+}
 
 
 void Sound::playAttackSound() {

@@ -29,8 +29,8 @@ public:
     static void releaseInstance();
     void Release();
     
-    
-   
+  
+    void update();
     void playAttackSound();
     void playMainSound();
     void playHitSound();
