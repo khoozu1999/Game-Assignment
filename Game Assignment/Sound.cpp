@@ -1,6 +1,7 @@
 #include "Sound.h"
 #include "Windows.h"
 #include "GameStateManager.h"
+#include <fmod.hpp>
 
 Sound* Sound::sInstance = NULL;
 
@@ -109,33 +110,4 @@ void Sound::Release() {
 
 }
 
-//int Sound::pause() {
-//
-//    return 0;
-//}
-//
-//int Sound::resume() {
-//
-//    return 0;
-//}
-//
-//int Sound::stop() {
-//
-//    return 0;
-//}
-//
-//int Sound::volumeUp() {
-//
-//    return 0;
-//}
-//
-//int Sound::volumeDown() {
-//
-//    return 0;
-//}
-//
-//
-//int Sound::Update() {
-//
-//    return 0;
-//}
+
