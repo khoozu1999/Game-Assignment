@@ -5,6 +5,7 @@
 #include "DirectInput.h"
 #include "Collider.h"
 #include "Enemy.h"
+#include "Sound.h"
 
 
 Character* Character::sInstance = NULL;
@@ -190,6 +191,7 @@ void Character::fixedUpdate()
 	if (isCollEnemy == true)
 	{
 		if (ishurt == true) {
+			Sound::getInstance()->playHitSound();
 			charHP -= 1;
 			ishurt = false;
 		}

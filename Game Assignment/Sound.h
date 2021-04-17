@@ -17,10 +17,12 @@ private:
    
     FMOD::Channel* attackChannel;
     FMOD::Channel* mainChannel;
+    FMOD::Channel* hitChannel;
    
 
     FMOD::Sound* attackSound;
     FMOD::Sound* mainSound;
+    FMOD::Sound* hitSound;
 
 
 
@@ -34,6 +36,7 @@ public:
    
     void playAttackSound();
     void playMainSound();
+    void playHitSound();
   
     
     Sound();

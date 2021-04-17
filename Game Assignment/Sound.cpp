@@ -28,12 +28,11 @@ Sound::Sound() {
    
     attackChannel = NULL;
     mainChannel = NULL;
-   
-
-  
+    hitChannel = NULL;
+    
     attackSound = NULL;
     mainSound = NULL;
-   
+    hitSound = NULL;
 
     FMOD::System_Create(&system);
     FMOD_RESULT result = FMOD::System_Create(&system);
@@ -49,6 +48,7 @@ Sound::Sound() {
  
     system->createSound("resource/sound/attackSound.mp3", FMOD_DEFAULT, 0, &attackSound);
     system->createSound("resource/sound/mainMenu.mp3", FMOD_DEFAULT, 0, &mainSound);
+    system->createSound("resource/sound/hitSound.mp3", FMOD_DEFAULT, 0, &hitSound);
     
 }
 
@@ -71,6 +71,11 @@ void Sound::playMainSound() {
     mainSound->setMode(FMOD_LOOP_NORMAL);
 }
 
+void Sound::playHitSound() {
+    system->playSound(hitSound, NULL, false, &hitChannel);
+    hitChannel->setVolume(0.2f);
+    hitSound->setMode(FMOD_LOOP_OFF);
+}
 
 
 
@@ -80,7 +85,8 @@ void Sound::Release() {
     system = NULL;
 
     
-  
+    hitSound->release();
+    hitSound = NULL;
 
     attackSound->release();
     attackSound = NULL;
