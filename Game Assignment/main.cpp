@@ -2,6 +2,7 @@
 #include "Graphic.h"
 #include "GameStateManager.h"
 #include "DirectInput.h"
+#include "Sound.h"
 #pragma warning(disable:4996)
 
 int main()
@@ -17,6 +18,7 @@ int main()
 	{
 		DirectInput::getInstance()->InputLoop();
 		GameStateManager::getInstance()->update();
+		Sound::getInstance()->update();
 		Graphic::getInstance()->present();
 	}
 
