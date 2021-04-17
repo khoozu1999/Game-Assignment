@@ -32,6 +32,8 @@ void Particle::init()
 		pvelocity[i].x = 0;
 		pvelocity[i].y = 1;
 	}
+
+	particledraw = false;
 }
 
 void Particle::fixedUpdate()
@@ -44,20 +46,41 @@ void Particle::fixedUpdate()
 
 }
 
-void Particle::update()
+int Particle::update(int i)
 {
 	if (colliderp->isCollide(fieball::getInstance()->positionf, fieball::getInstance()->size, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize)) {
+		i = 0;
+		if (i < 60)
+			particledraw = true;	
+	}
+	if (i >= 60)
+	{
+		for (int i = 0; i < 1000; i++)
+		{
+			pposition[i].x = 0;
+			pposition[i].y = -500;
 
+			pvelocity[i].x = 0;
+			pvelocity[i].y = 1;
+		}
+		particledraw = false;
+	}
+	
+	
+	if (particledraw == true)
+	{
 		pposition[particle_index] = Enemy::getInstance()->enemyPosition;
-
+		
 		int degree = rand() % 360;
 		float rad = degree / 180.0 * 3.142;
 		pvelocity[particle_index].x = sin(rad);
+		
 		pvelocity[particle_index].y = -cos(rad);
 
 		particle_index++;
 		particle_index %= 1000;
 	}
+	return i;
 }
 
 void Particle::draw()
@@ -77,6 +100,7 @@ void Particle::draw()
 
 void Particle::release()
 {
+
 	texture->Release();
 
 }

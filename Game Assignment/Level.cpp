@@ -28,14 +28,19 @@ void Level::fixedUpdate() {
 	Enemy::getInstance()->fixedUpdate();
 	Character::getInstance()->fixedUpdate();
 	fieball::getInstance()->fixedUpdate();
+	if (i < 60)
+		i++;
 	particle.fixedUpdate();
+
+	
 }
 void Level::update() {
 	Background::getInstance()->update();
 	Enemy::getInstance()->update();
 	Character::getInstance()->update();
 	fieball::getInstance()->update();
-	particle.update();
+
+	i = particle.update(i);
 
 	if (DirectInput::getInstance()->diKeys[DIK_P])
 	{
@@ -60,7 +65,10 @@ void Level::draw() {
 	Enemy::getInstance()->draw();
 	Character::getInstance()->draw();
 	fieball::getInstance()->draw();
-	particle.draw();
+	if (i < 60) {
+		particle.draw();
+	}
+	
 }
 
 void Level::release() {

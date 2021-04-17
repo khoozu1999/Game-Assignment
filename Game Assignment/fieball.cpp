@@ -136,9 +136,5 @@ void fieball::draw()
 }
 void fieball::release()
 {
-	sprite->Release();
-	sprite = NULL;
-
-	texture->Release();
-	texture = NULL;
+	
 }

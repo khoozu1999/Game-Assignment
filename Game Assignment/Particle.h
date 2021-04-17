@@ -18,11 +18,11 @@ public:
 	D3DXMATRIX mat;
 	int particle_index;
 	float frameRate, frameTimer, animationSpeed, Speed;
-
+	bool particledraw;
 
 	void init();
 	void fixedUpdate();
-	void update();
+	int update(int i);
 	void draw();
 	void release();
 };

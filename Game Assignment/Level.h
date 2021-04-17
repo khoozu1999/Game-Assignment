@@ -9,7 +9,7 @@ class Level : public GameState
 public:
 	Level();
 	~Level();
-
+	int i;
 	//fieball fieball;
 	Particle particle;
 	void init();
