@@ -21,7 +21,7 @@ Particle::~Particle()
 void Particle::init()
 {
 	D3DXCreateSprite(Graphic::getInstance()->d3dDevice, &sprite);
-	D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/particle.png", &texture);
+	D3DXCreateTextureFromFile(Graphic::getInstance()->d3dDevice, "resource/green.png", &texture);
 
 	particle_index = 0;
 	for (int i = 0; i < 1000; i++)
