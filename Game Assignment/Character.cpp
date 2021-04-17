@@ -198,7 +198,7 @@ void Character::fixedUpdate()
 
 	if (Enemy::getInstance()->enemyHP == 0) {
 		GameStateManager::getInstance()->currentState = 3;
-		Enemy::getInstance()->enemydie = true;
+		Enemy::getInstance()->enemyHP = 10;
 		
 	}
 

@@ -61,7 +61,7 @@ void GameWin::update() {
 	if (DirectInput::getInstance()->diKeys[DIK_R])
 	{
 		release();
-		GameStateManager::getInstance()->currentState = 1;
+		GameStateManager::getInstance()->currentState = 0;
 		init();
 	}
 }
