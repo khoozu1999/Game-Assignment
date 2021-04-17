@@ -4,6 +4,7 @@
 #include"Character.h"
 #include"Collider.h"
 #include"Enemy.h"
+#include"Sound.h"
 
 Collider* collider1 = new Collider;
 
@@ -93,11 +94,13 @@ void fieball::update()
 	if (DirectInput::getInstance()->diKeys[DIK_A]) {
 		
 		if (Character::getInstance()->char_faceDirection == 1) {
+			Sound::getInstance()->playAttackSound();
 			position.x = Character::getInstance()->charPosition.x + 50;
 			position.y = Character::getInstance()->charPosition.y;
 			FireballDirect = 1;
 		}
 		if (Character::getInstance()->char_faceDirection == -1) {
+			Sound::getInstance()->playAttackSound();
 			position.x = Character::getInstance()->charPosition.x + -50;
 			position.y = Character::getInstance()->charPosition.y;
 			FireballDirect = -1;

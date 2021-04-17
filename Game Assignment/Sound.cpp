@@ -61,11 +61,13 @@ Sound::~Sound() {
 
 void Sound::playAttackSound() {
     system->playSound(attackSound, NULL, false, &attackChannel);
+    attackChannel->setVolume(0.2f);
     attackSound->setMode(FMOD_LOOP_OFF);
 }
 
 void Sound::playMainSound() {
     system->playSound(mainSound, NULL, false, &mainChannel);
+    mainChannel->setVolume(0.2f);
     mainSound->setMode(FMOD_LOOP_NORMAL);
 }
 
