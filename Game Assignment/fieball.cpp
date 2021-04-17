@@ -5,7 +5,25 @@
 #include"Collider.h"
 #include"Enemy.h"
 
+fieball* fieball::sInstance = NULL;
+
 Collider* collider1 = new Collider;
+
+fieball* fieball::getInstance()
+{
+	if (fieball::sInstance == NULL)
+	{
+		sInstance = new fieball;
+	}
+
+	return sInstance;
+}
+
+void fieball::releaseInstance()
+{
+	delete sInstance;
+	sInstance = NULL;
+}
 
 fieball::fieball()
 {
@@ -60,9 +78,6 @@ void fieball::init()
 	rect->left = size.x * Frame;
 	rect->right = rect->left + size.x;
 
-	//position.x = 100;
-	//position.y = 350;
-
 	velocity.x = 0;
 	velocity.y = 0;
 	FireballDirect = 1;
@@ -95,12 +110,12 @@ void fieball::update()
 		if (Character::getInstance()->char_faceDirection == 1) {
 			position.x = Character::getInstance()->charPosition.x + 50;
 			position.y = Character::getInstance()->charPosition.y;
-			FireballDirect = 1;
+			FireballDirect = 2;
 		}
 		if (Character::getInstance()->char_faceDirection == -1) {
 			position.x = Character::getInstance()->charPosition.x + -50;
 			position.y = Character::getInstance()->charPosition.y;
-			FireballDirect = -1;
+			FireballDirect = -2;
 		}
 	}
 
@@ -110,14 +125,7 @@ void fieball::update()
 	if (collider1->isCollide(positionf, size, Enemy::getInstance()->enemyPosition, Enemy::getInstance()->enemySize))
 	{
 		position.y = -500;
-		
-		if (Character::getInstance()->isAttack == true) {
-			Enemy::getInstance()->enemyHP -= 1;
-			Character::getInstance()->isAttack = false;
-		}
-	}
-	else {
-		Character::getInstance()->isAttack = true;
+		Enemy::getInstance()->enemyHP -= 1;
 	}
 }
 void fieball::draw()
