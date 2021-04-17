@@ -5,9 +5,13 @@
 
 class fieball
 {
-public:
+private:
+	static fieball* sInstance;
 	fieball();
 	~fieball();
+public:
+	static fieball* getInstance();
+	static void releaseInstance();
 	HRESULT hr;
 	LPD3DXSPRITE sprite;
 	RECT rect[16];

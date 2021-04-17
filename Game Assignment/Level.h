@@ -2,7 +2,6 @@
 #include "GameState.h"
 #include<vector>
 #include <string>
-#include"fieball.h"
 #include "Particle.h"
 
 class Level : public GameState
@@ -10,8 +9,8 @@ class Level : public GameState
 public:
 	Level();
 	~Level();
-
-	fieball fieball;
+	int i;
+	//fieball fieball;
 	Particle particle;
 	void init();
 	void fixedUpdate();

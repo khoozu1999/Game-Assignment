@@ -5,6 +5,7 @@
 #include "DirectInput.h"
 #include"GameStateManager.h"
 #include "Sound.h"
+#include "fieball.h"
 
 Level::Level() 
 {
@@ -19,22 +20,27 @@ void Level::init() {
 	Background::getInstance()->init();
 	Enemy::getInstance()->init();
 	Character::getInstance()->init();
-	fieball.init();
+	fieball::getInstance()->init();
 	particle.init();
 }
 void Level::fixedUpdate() {
 	Background::getInstance()->fixedUpdate();
 	Enemy::getInstance()->fixedUpdate();
 	Character::getInstance()->fixedUpdate();
-	fieball.fixedUpdate();
+	fieball::getInstance()->fixedUpdate();
+	if (i < 60)
+		i++;
 	particle.fixedUpdate();
+
+	
 }
 void Level::update() {
 	Background::getInstance()->update();
 	Enemy::getInstance()->update();
 	Character::getInstance()->update();
-	fieball.update();
-	particle.update();
+	fieball::getInstance()->update();
+
+	i = particle.update(i);
 
 	if (DirectInput::getInstance()->diKeys[DIK_P])
 	{
@@ -58,8 +64,11 @@ void Level::draw() {
 	Background::getInstance()->draw();
 	Enemy::getInstance()->draw();
 	Character::getInstance()->draw();
-	fieball.draw();
-	particle.draw();
+	fieball::getInstance()->draw();
+	if (i < 60) {
+		particle.draw();
+	}
+	
 }
 
 void Level::release() {
@@ -74,7 +83,9 @@ void Level::release() {
 
 	Character::getInstance()->release();
 	Character::getInstance()->releaseInstance();
-	particle.release();
+
+	fieball::getInstance()->release();
+	fieball::getInstance()->releaseInstance();
 }
 
 
