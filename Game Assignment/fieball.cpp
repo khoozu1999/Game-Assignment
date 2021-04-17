@@ -4,6 +4,7 @@
 #include"Character.h"
 #include"Collider.h"
 #include"Enemy.h"
+#include"Sound.h"
 
 fieball* fieball::sInstance = NULL;
 
@@ -108,11 +109,13 @@ void fieball::update()
 	if (DirectInput::getInstance()->diKeys[DIK_SPACE]) {
 		
 		if (Character::getInstance()->char_faceDirection == 1) {
+			Sound::getInstance()->playAttackSound();
 			position.x = Character::getInstance()->charPosition.x + 50;
 			position.y = Character::getInstance()->charPosition.y;
 			FireballDirect = 2;
 		}
 		if (Character::getInstance()->char_faceDirection == -1) {
+			Sound::getInstance()->playAttackSound();
 			position.x = Character::getInstance()->charPosition.x + -50;
 			position.y = Character::getInstance()->charPosition.y;
 			FireballDirect = -2;
